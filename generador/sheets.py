@@ -31,8 +31,12 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets",
 
 
 def _sa_path():
-    # 1) GOOGLE_SA_JSON en .env.cfo  2) gcloud_sa.json en esta carpeta
+    # 1) variable de entorno GOOGLE_SA_JSON  2) .env.cfo  3) gcloud_sa.json en esta
+    # carpeta o en las de arriba (así funciona igual acá que en GitHub Actions,
+    # donde la credencial se escribe en la raíz del repo).
     base = os.path.dirname(os.path.abspath(__file__))
+    if os.environ.get("GOOGLE_SA_JSON"):
+        return os.path.expanduser(os.environ["GOOGLE_SA_JSON"])
     env_path = os.path.join(base, ".env.cfo")
     if os.path.exists(env_path):
         for line in open(env_path, encoding="utf-8"):
@@ -41,6 +45,12 @@ def _sa_path():
                 p = line.split("=", 1)[1].strip().strip('"').strip("'")
                 if p:
                     return p if os.path.isabs(p) else os.path.join(base, p)
+    d = base
+    for _ in range(3):
+        cand = os.path.join(d, "gcloud_sa.json")
+        if os.path.exists(cand):
+            return cand
+        d = os.path.dirname(d)
     return os.path.join(base, "gcloud_sa.json")
 
 

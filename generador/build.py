@@ -17,7 +17,7 @@ Uso:
     python3 build.py --out ../sitio  # las escribe en otra carpeta
     python3 build.py --dry-run       # solo muestra qué leyó, no escribe nada
 """
-import sys, re, json, pathlib, urllib.request, warnings, csv, io
+import sys, re, time, json, pathlib, urllib.request, warnings, csv, io
 warnings.filterwarnings("ignore")
 # sheets.py y la credencial viven al lado del script o en la carpeta de arriba
 # (local: ~/Desktop/claude · en CI: la raíz del repo)
@@ -89,10 +89,26 @@ def parse_costos(rows):
     return items
 
 
+def bajar(url, intentos=3):
+    """Google a veces corta la respuesta a la mitad (IncompleteRead). Con timeout y
+    reintentos, en vez de quedarse colgado."""
+    for n in range(intentos):
+        try:
+            return urllib.request.urlopen(url, timeout=20).read().decode("utf-8")
+        except Exception as e:
+            if n == intentos - 1:
+                print(f"    ⚠ no se pudo bajar ({type(e).__name__}), sigo sin eso")
+                return None
+            time.sleep(2 * (n + 1))
+
+
 def colores_publicados(gid):
-    """código -> lista de colores, leídos del catálogo que ya está publicado."""
-    url = f"{PUB}?gid={gid}&single=true&output=csv"
-    rows = list(csv.reader(io.StringIO(urllib.request.urlopen(url).read().decode("utf-8"))))
+    """código -> lista de colores, leídos del catálogo que ya está publicado.
+    Si falla, se sigue sin colores: no vale abortar la publicación por esto."""
+    texto = bajar(f"{PUB}?gid={gid}&single=true&output=csv")
+    if not texto:
+        return {}
+    rows = list(csv.reader(io.StringIO(texto)))
     ci, out, actual = None, {}, []
     for r in rows:
         low = [(x or "").strip().lower() for x in r]
