@@ -15,13 +15,16 @@ ahora() { date '+%d/%m %H:%M:%S'; }
   echo "$(ahora)  ✗ falló la generación:"; tail -5 /tmp/catalogo_build.log; exit 1;
 }
 
-if git diff --quiet; then
+# Solo se publican los HTML generados: una corrida desatendida nunca sube
+# cambios de código que alguien haya dejado a medias.
+PAGINAS="index.html iphone.html macbook.html windows.html"
+if git diff --quiet -- $PAGINAS; then
   echo "$(ahora)  · sin cambios"
   exit 0
 fi
 
-cambios=$(git diff --stat | tail -1)
-git add -A
+cambios=$(git diff --stat -- $PAGINAS | tail -1)
+git add $PAGINAS
 git commit -qm "Actualización de precios $(date '+%d/%m/%Y %H:%M')"
 git push -q origin main
 echo "$(ahora)  ✓ publicado ($cambios)"
