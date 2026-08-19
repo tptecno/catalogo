@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Catálogo MacBook · TPTecno</title>
+<style>
+  :root{--accent:#FF395D;--bg:#f6f6f7;--card:#fff;--ink:#16161a;--muted:#71717a;
+        --line:#e6e6ea;--pill:#f1f1f4}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%}
+  .wrap{max-width:880px;margin:0 auto;padding:16px 14px 60px}
+  header.top{text-align:center;padding:10px 0 4px}
+  header.top h1{margin:0;font-size:26px;letter-spacing:-.02em}
+  header.top .sub{color:var(--muted);font-size:13px;margin-top:4px}
+  .pays{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .pays span{background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:4px 10px;font-size:12px;color:var(--muted)}
+
+  nav.cats{display:flex;gap:7px;overflow-x:auto;margin-top:14px;padding-bottom:2px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav.cats::-webkit-scrollbar{display:none}
+  nav.cats a{flex:0 0 auto;text-decoration:none;background:#fff;border:1px solid var(--line);
+    color:var(--ink);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;
+    transition:.15s;white-space:nowrap}
+  nav.cats a:hover{border-color:#c9c9d1}
+  nav.cats a.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .loading{text-align:center;color:var(--muted);padding:44px 10px;font-size:13px}
+  .filters{position:sticky;top:0;z-index:5;background:var(--bg);
+    padding:12px 0 10px;margin-top:12px;border-bottom:1px solid var(--line)}
+  .flabel{font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--muted);margin:0 0 8px 2px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);
+    border-radius:999px;padding:8px 15px;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
+  .chip:hover{border-color:#c9c9d1}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .selects{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+  .fld label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--muted);margin:0 0 4px 2px}
+  .fld select{width:100%;appearance:none;background:#fff no-repeat right 10px center/10px 6px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%2371717a' d='M0 0h10L5 6z'/%3E%3C/svg%3E");
+    border:1px solid var(--line);border-radius:10px;padding:9px 28px 9px 11px;
+    font-size:14px;font-weight:600;color:var(--ink);cursor:pointer}
+  .fld select.on{border-color:var(--accent);color:var(--accent)}
+  .bar{display:flex;align-items:center;gap:10px;margin-top:9px;margin-left:2px}
+  .count{font-size:12px;color:var(--muted)}
+  .clear{appearance:none;border:0;background:none;color:var(--accent);font-size:12px;
+    font-weight:600;cursor:pointer;padding:0;display:none}
+
+  .group{margin-top:22px}
+  .group>h3{margin:0 0 8px 2px;font-size:12px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--muted)}
+  .model{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    margin-top:12px;overflow:hidden}
+  .model h2{margin:0;padding:13px 16px;font-size:16px;border-bottom:1px solid var(--line);background:#fbfbfc}
+  .colors{padding:9px 16px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+  .colors b{color:var(--ink);font-weight:600}
+  .row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid #f0f0f3}
+  .row:last-child{border-bottom:0}
+  .cap{font-weight:650;min-width:74px}
+  .spec{font-size:13.5px;color:#3f3f46;flex:1;min-width:170px}
+  .spec.name{font-size:14.5px;font-weight:600;color:var(--ink)}
+  .price{margin-left:auto;font-weight:700;font-size:16px;white-space:nowrap}
+  .soon{margin-left:auto;font-size:12.5px;color:var(--muted);background:var(--pill);
+    border-radius:999px;padding:4px 10px;white-space:nowrap}
+  .wa{display:inline-flex;align-items:center;gap:5px;text-decoration:none;background:var(--accent);
+    color:#fff;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;white-space:nowrap}
+
+  /* --- tarjetas Windows --- */
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;margin-top:10px}
+  .prod h2{margin:0 0 9px;font-size:15px;line-height:1.35;font-weight:650}
+  .pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+  .pills i{font-style:normal;background:var(--pill);border-radius:7px;padding:4px 9px;
+    font-size:12.5px;color:#3f3f46}
+  .pills i.gpu{background:#eef4ff;color:#1e4bbf}
+  .foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .more{appearance:none;border:0;background:none;color:var(--muted);font-size:12.5px;
+    cursor:pointer;padding:0;text-decoration:underline}
+  details.full{margin-top:9px}
+  details.full>summary{list-style:none;cursor:pointer;color:var(--muted);font-size:12.5px}
+  details.full>summary::-webkit-details-marker{display:none}
+  details.full p{margin:8px 0 0;font-size:12.5px;color:#52525b;line-height:1.5}
+
+  .empty{text-align:center;color:var(--muted);padding:44px 10px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px}
+  footer a{color:var(--accent)}
+  .stale{display:none;background:#fff6e5;border:1px solid #f0d9a8;color:#7a5b12;
+    border-radius:10px;padding:9px 12px;font-size:12.5px;margin-top:12px}
+  @media (max-width:430px){
+    /* la fila entra en una sola línea: capacidad · precio · botón */
+    .row{gap:8px;padding:10px 12px}
+    .cap{min-width:0;font-size:14px}
+    .spec{font-size:12.5px}
+    .price{font-size:15px}
+    .wa{padding:6px 11px;font-size:12.5px}
+    /* con descripción larga (MacBook, iMac) el precio y el botón bajan a otra línea */
+    .row.long{flex-wrap:wrap;row-gap:9px}
+    .row.long .spec{flex-basis:100%}
+    .row.long .price{margin-left:0}
+    .row.long .wa{margin-left:auto}
+    .prod .foot .wa{padding:8px 16px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1 id="titulo">MacBook</h1>
+    <div class="sub">Enviamos en el día 🛵 · Consultá por modelos o configuraciones no listadas</div>
+    <div class="pays"><span>Efectivo / USD</span><span>Transf. +3%</span><span>Crypto +2%</span></div>
+  </header>
+
+  <nav class="cats" id="cats"></nav>
+
+  <div id="stale" class="stale"></div>
+
+  <div class="filters" id="filters"></div>
+  <div id="list"></div>
+
+  <footer>
+    Precios en dólares, sujetos a cambio sin previo aviso.<br>
+    Escribinos por WhatsApp y te lo reservamos.
+  </footer>
+</div>
+
+<script type="application/json" id="datos-iphone">[{"model": "iPhone 17 Pro Max", "desc": "256 GB", "price": "USD 1.350", "avail": true, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Pro Max", "desc": "512 GB", "price": "USD 1.520", "avail": true, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Pro Max", "desc": "1 TB", "price": "USD 1.710", "avail": true, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Pro Max", "desc": "2 TB", "price": "INGRESANDO", "avail": false, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Pro (6.3\")", "desc": "256 GB", "price": "USD 1.245", "avail": true, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Pro (6.3\")", "desc": "512 GB", "price": "USD 1.430", "avail": true, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Pro (6.3\")", "desc": "1 TB", "price": "INGRESANDO", "avail": false, "colors": ["Cosmic Orange", "Deep Blue", "Silver"]}, {"model": "iPhone 17 Air (6.6\")", "desc": "256 GB", "price": "USD 1.140", "avail": true, "colors": ["Sky Blue", "Space Black", "Light Gold", "Cloud White"]}, {"model": "iPhone 17 Air (6.6\")", "desc": "512 GB", "price": "USD 1.240", "avail": true, "colors": ["Sky Blue", "Space Black", "Light Gold", "Cloud White"]}, {"model": "iPhone 17 E (6.1\")", "desc": "256 GB", "price": "USD 830", "avail": true, "colors": ["Sky Blue", "Space Black", "Light Gold", "Cloud White"]}, {"model": "iPhone 17 (6.3\")", "desc": "256 GB", "price": "USD 980", "avail": true, "colors": ["Lavender", "Sage", "MIst Blue", "White", "Black"]}, {"model": "iPhone 17 (6.3\")", "desc": "512 GB", "price": "INGRESANDO", "avail": false, "colors": ["Lavender", "Sage", "MIst Blue", "White", "Black"]}, {"model": "iPhone 16 (6.1\")", "desc": "128 GB", "price": "USD 880", "avail": true, "colors": ["Ultramarine", "Teal", "Pink", "White", "Black"]}, {"model": "iPhone 16 (6.1\")", "desc": "256 GB", "price": "INGRESANDO", "avail": false}, {"model": "iPhone 15 (6.1\")", "desc": "128 GB", "price": "USD 790", "avail": true, "colors": ["Pink", "Black"]}, {"model": "Accesorios", "desc": "Cargador Original 20W", "price": "USD 30", "avail": true}]</script>
+<script type="application/json" id="datos-macbook">[{"model": "MacBook Pro 14,2\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 16GB - 512 SSD", "price": "USD 2.090", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14,2\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 16GB - 1TB SSD", "price": "USD 2.260", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14,2\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 24GB - 1TB SSD", "price": "USD 2.580", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14,2\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 32GB - 1TB SSD", "price": "USD 2.850", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Pro- 15 core CPU / 16 core GPU - 24GB - 1TB SSD", "price": "USD 2.860", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Pro- 15 core CPU / 16 core GPU - 24GB - 2TB SSD", "price": "USD 3.090", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Pro - 18 core CPU / 20 core GPU - 24GB - 2TB SSD", "price": "USD 3.540", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Pro - 18 core CPU / 20 core GPU - 48GB - 1TB SSD", "price": "USD 3.740", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Pro - 18 core CPU / 20 core GPU - 64GB - 1TB SSD", "price": "USD 4.240", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Max - 18 core CPU / 32 core GPU - 36GB - 2TB SSD", "price": "USD 4.300", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Max - 18 core CPU / 40 core GPU - 48GB - 2TB SSD", "price": "USD 5.250", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 14.2\" M5 Pro & M5 Max", "desc": "M5 Max - 18 core CPU / 40 core GPU - 64GB - 2TB SSD", "price": "USD 5.780", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 16\" M5 Pro & M5 Max", "desc": "M5 Pro- 18 core CPU / 20 core GPU - 24GB - 1TB SSD", "price": "USD 3.300", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 16\" M5 Pro & M5 Max", "desc": "M5 Pro- 18 core CPU / 20 core GPU - 48GB - 1TB SSD", "price": "USD 4.090", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 16\" M5 Pro & M5 Max", "desc": "M5 Max - 18 core CPU / 32 core GPU - 36GB - 2TB SSD", "price": "USD 4.760", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 16\" M5 Pro & M5 Max", "desc": "M5 Max - 18 core CPU / 40 core GPU - 48GB - 2TB SSD", "price": "USD 5.290", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Pro 16\" M5 Pro & M5 Max", "desc": "M5 Max - 18 core CPU / 40 core GPU - 64GB - 2TB SSD", "price": "USD 6.100", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "MacBook Neo 13\"", "desc": "A18 Pro - 6 core CPU / 5 core GPU - 8GB - 256 SSD", "price": "USD 845", "avail": true, "colors": ["Silver", "Indigo", "Blush", "Citrus"]}, {"model": "MacBook Neo 13\"", "desc": "A18 Pro - 6 core CPU / 5 core GPU - 8GB - 512 SSD", "price": "USD 985", "avail": true, "colors": ["Silver", "Indigo", "Blush", "Citrus"]}, {"model": "MacBook Neo 13\"", "desc": "A18 Pro - 6 core CPU / 5 core GPU - 8GB - 256 SSD 🇪🇸", "price": "USD 955", "avail": true, "colors": ["Silver", "Indigo", "Blush", "Citrus"]}, {"model": "MacBook Neo 13\"", "desc": "A18 Pro - 6 core CPU / 5 core GPU - 8GB - 512 SSD 🇪🇸", "price": "USD 1.035", "avail": true, "colors": ["Silver", "Indigo", "Blush", "Citrus"]}, {"model": "MacBook Air 13.6\" M5", "desc": "M5 - 10 core CPU / 8 core GPU - 16GB - 512SSD", "price": "USD 1.430", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 13.6\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 16GB -1TB SSD", "price": "USD 1.640", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 13.6\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 24GB - 1TB SSD", "price": "USD 2.040", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 15\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 16GB - 512SSD", "price": "USD 1.750", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 15\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 16GB -1TB SSD", "price": "USD 2.070", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 15\" M5", "desc": "M5 - 10 core CPU / 10 core GPU - 24GB - 1TB SSD", "price": "USD 2.290", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 13.6\" M4", "desc": "M4 - 10 core CPU / 8 core GPU - 16GB - 256SSD", "price": "INGRESANDO", "avail": false, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 13.6\" M4", "desc": "M4 - 10 core CPU / 8 core GPU - 16GB - 512SSD", "price": "USD 1.360", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 15\" M4", "desc": "M4 - 10 core CPU / 8 core GPU - 16GB - 256SSD", "price": "USD 1.390", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 15\" M4", "desc": "M4 - 10 core CPU / 8 core GPU - 16GB - 512SSD", "price": "USD 1.550", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}, {"model": "MacBook Air 15\" M4", "desc": "M5 - 10 core CPU / 10 core GPU - 24GB - 1TB SSD", "price": "USD 2.270", "avail": true, "colors": ["Space Gray", "Silver", "Midnight", "Starlight"]}]</script>
+<script type="application/json" id="datos-ipad">[{"model": "iPad Pro M5 11\"", "desc": "256 GB", "price": "USD 1.270", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 11\"", "desc": "512 GB", "price": "USD 1.580", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 11\"", "desc": "1 TB", "price": "USD 1.950", "avail": true}, {"model": "iPad Pro M5 11\"", "desc": "256 GB - WiFi + Cell", "price": "USD 1.590", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 11\"", "desc": "512 GB - WiFi + Cell", "price": "USD 1.800", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 13\"", "desc": "256 GB", "price": "USD 1.480", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 13\"", "desc": "512 GB", "price": "USD 1.740", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 13\"", "desc": "1 TB", "price": "USD 2.350", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 13\"", "desc": "2 TB", "price": "USD 2.800", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 13\"", "desc": "256 GB - WiFi + Cell", "price": "USD 1.940", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Pro M5 13\"", "desc": "512 GB - WiFi + Cell", "price": "USD 2.180", "avail": true, "colors": ["Space Black", "Silver"]}, {"model": "iPad Air M4 11\"", "desc": "128 GB", "price": "USD 890", "avail": true, "colors": ["Space Gray - Purple - Starlight - Blue"]}, {"model": "iPad Air M4 11\"", "desc": "256 GB", "price": "USD 1.030", "avail": true, "colors": ["Space Gray - Purple - Starlight - Blue"]}, {"model": "iPad Air M4 13\"", "desc": "128 GB", "price": "USD 1.090", "avail": true, "colors": ["Space Gray - Purple - Starlight - Blue"]}, {"model": "iPad Air M4 13\"", "desc": "256 GB", "price": "USD 1.230", "avail": true, "colors": ["Space Gray - Purple - Starlight - Blue"]}, {"model": "iPad Air M4 13\"", "desc": "512 GB", "price": "USD 1.380", "avail": true, "colors": ["Space Gray - Purple - Starlight - Blue"]}, {"model": "iPad 11th 11\"", "desc": "128 GB", "price": "USD 490", "avail": true, "colors": ["Space Gray - Silver - Green - Rose Gold - Sky Blue"]}, {"model": "iPad 11th 11\"", "desc": "256 GB", "price": "USD 660", "avail": true, "colors": ["Space Gray - Silver - Green - Rose Gold - Sky Blue"]}, {"model": "iPad Mini 7 8.3\"", "desc": "128 GB", "price": "USD 660", "avail": true, "colors": ["Space Gray - Silver - Green - Rose Gold - Sky Blue"]}, {"model": "iPad Mini 7 8.3\"", "desc": "256 GB", "price": "USD 820", "avail": true, "colors": ["Space Gray - Silver - Green - Rose Gold - Sky Blue"]}, {"model": "Accesorios", "desc": "Apple Pencil USBC", "price": "USD 140", "avail": true, "colors": ["Accesorios"]}, {"model": "Accesorios", "desc": "Apple Pencil PRO", "price": "USD 170", "avail": true, "colors": ["Accesorios"]}, {"model": "Accesorios", "desc": "Magic Keyboard 11\" for iPad Pro M4/M5", "price": "USD 440", "avail": true, "colors": ["Accesorios"]}, {"model": "Accesorios", "desc": "Magic Keyboard 13\" for iPad Pro M4/M5", "price": "USD 500", "avail": true, "colors": ["Accesorios"]}, {"model": "Accesorios", "desc": "Magic Keyboard 11\" for iPad Air M3", "price": "USD 440", "avail": true, "colors": ["Accesorios"]}, {"model": "Accesorios", "desc": "Magic Keyboard 13\" for iPad Air M3", "price": "USD 470", "avail": true, "colors": ["Accesorios"]}, {"model": "Accesorios", "desc": "Magic Folio 11\" for iPad 11th", "price": "USD 370", "avail": true, "colors": ["Accesorios"]}]</script>
+<script type="application/json" id="datos-imac">[{"model": "iMac 24\" M4", "desc": "M4 - 8 core CPU / 8 core GPU - 16GB - 256SSD", "price": "USD 2.130", "avail": true}, {"model": "iMac 24\" M4", "desc": "M4 - 10 core CPU / 10 core GPU - 16GB - 256SSD", "price": "USD 2.400", "avail": true}, {"model": "iMac 24\" M4", "desc": "M4 - 10 core CPU / 10 core GPU - 16GB - 512SSD", "price": "USD 2.610", "avail": true}, {"model": "iMac 24\" M4", "desc": "M4 - 10 core CPU / 10 core GPU - 24GB - 512 SSD", "price": "USD 2.890", "avail": true}, {"model": "iMac 24\" M4", "desc": "M4 - 10 core CPU / 10 core GPU - 24GB - 1TB SSD", "price": "USD 3.650", "avail": true}, {"model": "iMac 24\" M4", "desc": "M4 - 10 core CPU / 10 core GPU - 32GB - 1TB SSD", "price": "USD 3.850", "avail": true}, {"model": "Mac Mini M4", "desc": "M4 - 10 core CPU / 10 core GPU - 16GB - 256SSD", "price": "USD 980", "avail": true}, {"model": "Mac Mini M4", "desc": "M4 - 10 core CPU / 10 core GPU - 16GB - 512SSD", "price": "USD 1.190", "avail": true}, {"model": "Mac Mini M4", "desc": "M4 - 10 core CPU / 10 core GPU - 24GB - 512SSD", "price": "USD 1.730", "avail": true}, {"model": "Mac Mini M4", "desc": "M4 Pro - 12 Core CPU / 16 Core GPU - 24GB - 512SSD", "price": "USD 2.030", "avail": true}, {"model": "Mac Mini M4", "desc": "M4 Pro - 12 Core CPU / 16 Core GPU - 24GB - 1TB SSD", "price": "SIN STOCK", "avail": false}, {"model": "Mac Studio (Release 2025)", "desc": "M4 Max - 14 core CPU / 32 core GPU - 36GB - 512SSD", "price": "SIN STOCK", "avail": false}, {"model": "Mac Studio (Release 2025)", "desc": "M4 Max - 14 core CPU / 32 core GPU - 36GB - 1TB SSD", "price": "SIN STOCK", "avail": false}, {"model": "Mac Studio (Release 2025)", "desc": "M4 Max - 16 core CPU / 40 core GPU - 48GB - 1TB SSD", "price": "SIN STOCK", "avail": false}, {"model": "Mac Studio (Release 2025)", "desc": "M4 Max - 16 core CPU / 40 core GPU - 64GB - 1TB SSD", "price": "SIN STOCK", "avail": false}, {"model": "Mac Studio (Release 2025)", "desc": "M3 Ultra - 28 core CPU / 60 core GPU - 96GB - 1TB SSD", "price": "SIN STOCK", "avail": false}, {"model": "Mac Studio (Release 2025)", "desc": "M4 Max - 16 core CPU / 40 core GPU - 128GB - 1TB SSD", "price": "SIN STOCK", "avail": false}, {"model": "Apple Studio Display 27\" 2026", "desc": "Standard Glass, Tilt Adjustable Stand", "price": "USD 2.800", "avail": true}, {"model": "Apple Studio Display 27\" 2026", "desc": "Nano Texture Glass, Tilt Adjustable Stand", "price": "USD 3.120", "avail": true}, {"model": "Apple Studio Display 27\" 2026", "desc": "Standard Glass, Tilt & Height Adjustable Stand", "price": "USD 3.250", "avail": true}, {"model": "Apple Studio Display 27\" 2026", "desc": "Nano-Texture Glass, Tilt & Height Adjustable Stand", "price": "USD 3.380", "avail": true}, {"model": "Apple Studio Display 27\" XDR 2026", "desc": "Nano-Texture Glass, Tilt & Height Adjustable Stand", "price": "USD 5.300", "avail": true}]</script>
+<script type="application/json" id="datos-watch">[{"model": "Apple Watch Serie 11", "desc": "42mm (GPS)", "price": "USD 420", "avail": true, "colors": ["Jet Black", "Rose Gold", "Silver", "Space Gray"]}, {"model": "Apple Watch Serie 11", "desc": "46mm (GPS)", "price": "USD 450", "avail": true, "colors": ["Jet Black", "Rose Gold", "Silver", "Space Gray"]}, {"model": "Apple Watch Serie 11", "desc": "42mm (GPS + Cellular)", "price": "USD 650", "avail": true, "colors": ["Jet Black", "Rose Gold", "Silver", "Space Gray"]}, {"model": "Apple Watch Serie 11", "desc": "46mm (GPS + Cellular)", "price": "USD 720", "avail": true, "colors": ["Jet Black", "Rose Gold", "Silver", "Space Gray"]}, {"model": "Apple Watch SE 3", "desc": "40mm", "price": "USD 330", "avail": true, "colors": ["MIdnight", "Starlight"]}, {"model": "Apple Watch SE 3", "desc": "44mm", "price": "USD 360", "avail": true, "colors": ["MIdnight", "Starlight"]}, {"model": "Apple Watch SE 3", "desc": "40mm (GPS + Cellular)", "price": "USD 450", "avail": true, "colors": ["MIdnight", "Starlight"]}, {"model": "Apple Watch SE 3", "desc": "44mm (GPS + Cellular)", "price": "USD 480", "avail": true, "colors": ["MIdnight", "Starlight"]}, {"model": "Apple Watch Ultra 3", "desc": "49mm Ultra Natural Titanium Case", "price": "USD 870", "avail": true, "colors": ["Ocean Band", "Trail Loop", "Alpine Loop"]}, {"model": "Apple Watch Ultra 3", "desc": "49mm Ultra Black Titanium Case", "price": "USD 870", "avail": true, "colors": ["Ocean Band", "Trail Loop", "Alpine Loop"]}, {"model": "WATCH ULTRA 3 MILANESSE LOOP", "desc": "Apple Watch Ultra 3 [GPS + Cellular 49mm]", "price": "USD 1.060", "avail": true}]</script>
+<script type="application/json" id="datos-accesorios">[{"model": "AirPods", "desc": "AirPods Pro 3nd Gen", "price": "USD 280", "avail": true}, {"model": "AirPods", "desc": "AirPods 4", "price": "USD 170", "avail": true}, {"model": "AirPods", "desc": "AirPods 4 Noice Cancelling", "price": "USD 225", "avail": true}, {"model": "AirPods", "desc": "AirPods Max", "price": "USD 550", "avail": true}, {"model": "AirPods", "desc": "AirPods Max 2", "price": "USD 650", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Mouse White (USBC)", "price": "USD 150", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Mouse Black (USBC)", "price": "USD 170", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Trackpad White", "price": "USD 240", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Keyboard (ingles) White Keys", "price": "SIN STOCK", "avail": false}, {"model": "Accesorios Apple", "desc": "Magic Keyboard (español) White Keys", "price": "USD 210", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Keyboard with Touch ID (español) White Keys", "price": "USD 270", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Keyboard w/numeric - Spanish", "price": "USD 200", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Keyboard w/numeric (ingles) White Keys", "price": "USD 220", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Keyboard w/numeric & Touch ID (ingles) White Keys", "price": "USD 320", "avail": true}, {"model": "Accesorios Apple", "desc": "Magic Keyboard w/numeric & Touch ID (ingles) Black Keys", "price": "USD 360", "avail": true}, {"model": "Accesorios Apple", "desc": "AirTag (4-Pack)", "price": "USD 145", "avail": true}, {"model": "Accesorios Apple", "desc": "Cargador Original 20W", "price": "USD 35", "avail": true}, {"model": "Accesorios Apple", "desc": "Cargador Original 20W Patas ARG", "price": "SIN STOCK", "avail": false}, {"model": "Accesorios Apple", "desc": "CARGADOR 40W Dynamic Power Adapter with 60W Max", "price": "USD 70", "avail": true}, {"model": "Accesorios Apple", "desc": "MagSafe Charger (1M)", "price": "USD 100", "avail": true}, {"model": "Accesorios Apple", "desc": "MagSafe Charger (2M)", "price": "USD 120", "avail": true}, {"model": "Accesorios Apple", "desc": "Apple USB-C to Digital AV Multiport Adapter", "price": "USD 120", "avail": true}, {"model": "Accesorios Apple", "desc": "Apple TV 4K 128GB", "price": "USD 340", "avail": true}]</script>
+<script type="application/json" id="datos-samsung">[{"model": "Samsung S26 Ultra", "desc": "256 GB", "price": "USD 1.010", "avail": true}, {"model": "Samsung S26 Ultra", "desc": "512 GB", "price": "USD 1.180", "avail": true}, {"model": "Samsung S26 Ultra", "desc": "1 TB", "price": "USD 1.440", "avail": true}, {"model": "Samsung S26 Plus", "desc": "256 GB", "price": "USD 930", "avail": true}, {"model": "Samsung S26 Plus", "desc": "512 GB", "price": "USD 1.100", "avail": true}, {"model": "Samsung S26", "desc": "256 GB", "price": "USD 780", "avail": true}, {"model": "Samsung S26", "desc": "512 GB", "price": "USD 970", "avail": true}, {"model": "Samsung S25 Ultra", "desc": "256 GB", "price": "USD 885", "avail": true}, {"model": "Samsung S25 Ultra", "desc": "512 GB", "price": "USD 975", "avail": true}, {"model": "Samsung S25 Ultra", "desc": "1 TB", "price": "USD 1.040", "avail": true}, {"model": "Samsung Z Flip 8", "desc": "256 GB", "price": "USD 1.200", "avail": true}, {"model": "Samsung Z Flip 8", "desc": "512 GB", "price": "USD 1.360", "avail": true}, {"model": "Samsung Z Flip 8", "desc": "1 TB", "price": "USD 1.130", "avail": true}, {"model": "Samsung Z Fold 8 Ultra", "desc": "256 GB", "price": "USD 1.960", "avail": true}, {"model": "Samsung Z Fold 8 Ultra", "desc": "512 GB", "price": "USD 2.130", "avail": true}]</script>
+<script type="application/json" id="datos-dji">[{"model": "Drones", "desc": "DJI GOGGLES INTEGRA", "price": "USD 490", "avail": true}, {"model": "Drones", "desc": "DJI MINI 5 PRO FLY MORE COMBO PLUS W/ RC 2", "price": "USD 1.540", "avail": true}, {"model": "Drones", "desc": "DRONE ANTIGRAVITY A1 EXPLORER 8K 360 BUNDLE", "price": "USD 1.980", "avail": true}, {"model": "Drones", "desc": "DRONE DJI AVATA PRO VIEW (SOLO DRONE)", "price": "USD 820", "avail": true}, {"model": "Drones", "desc": "DRONE DJI AVATA 360 MOTION FLY MORE COMBO", "price": "USD 1.560", "avail": true}, {"model": "Drones", "desc": "DRONE DJI MINI 5 PRO 4 BATT", "price": "USD 1.350", "avail": true}, {"model": "Drones", "desc": "DJI RC CONTROLLER WITH SCREEN", "price": "USD 520", "avail": true}, {"model": "Drones", "desc": "DJI CAMERA FILTER (MINI 3 PRO)", "price": "USD 150", "avail": true}, {"model": "Drones", "desc": "DJI GOGGLES 2", "price": "USD 670", "avail": true}, {"model": "Drones", "desc": "DJI PROPELLERS (MINI 3 PRO)", "price": "USD 75", "avail": true}, {"model": "Drones", "desc": "DJI FLY MORE KIT PLUS (MINI 3 PRO)", "price": "USD 370", "avail": true}, {"model": "Drones", "desc": "DJI RC MOTION 2 CONTROLLER FOR AVATA", "price": "USD 380", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI OSMO ACTION 6 ADVENTURE COMBO", "price": "USD 760", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI OSMO POCKET 3 CREATOR COMBO", "price": "USD 750", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI OSMO POCKET 4 CREATOR COMBO", "price": "USD 850", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI MIC 3 WIRELESS MICROPHONE /2TX + 1RX + CHARGING CASE", "price": "USD 440", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI MIC MINI WIRELESS MICROPHONE /2TX + 1RX + CHARGING CASE", "price": "USD 200", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI MIC MINI WIRELESS MICROPHONE MOBILE /2TX + 1 MOBILE RX", "price": "USD 150", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI MIC MINI 2ND GEN (WIRELESS MICROPHONE X2)", "price": "USD 190", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI OSMO POCKET 4 PRO STANDARD", "price": "USD 850", "avail": true}, {"model": "Accesorios DJI", "desc": "DJI OSMO POCKET 4 PRO VLOG COMBO", "price": "USD 1.100", "avail": true}]</script>
+<script type="application/json" id="datos-sonos">[{"model": "Portátiles", "desc": "Sonos Roam 2", "price": "USD 280", "avail": true}, {"model": "Portátiles", "desc": "Sonos Move 2", "price": "USD 695", "avail": true}, {"model": "Sistemas de Audio", "desc": "Sonos Era 100", "price": "USD 330", "avail": true}, {"model": "Sistemas de Audio", "desc": "Sonos Era 300", "price": "USD 625", "avail": true}, {"model": "Sistemas de Audio", "desc": "Sonos Five", "price": "USD 850", "avail": true}, {"model": "Barras de Sonido", "desc": "Sonos Ray", "price": "USD 340", "avail": true}, {"model": "Barras de Sonido", "desc": "Sonos Beam (2nd Gen)", "price": "USD 735", "avail": true}, {"model": "Barras de Sonido", "desc": "Sonos Arc", "price": "USD 1.125", "avail": true}, {"model": "Barras de Sonido", "desc": "Sonos Arc Ultra", "price": "USD 1.310", "avail": true}, {"model": "Subwoofer", "desc": "Sonos Sub Mini", "price": "USD 660", "avail": true}, {"model": "Subwoofer", "desc": "Sonos Sub (4rd Gen)", "price": "USD 1.120", "avail": true}]</script>
+<script type="application/json" id="datos-otros">[{"model": "Lentes", "desc": "RayBan Meta Gen 1", "price": "USD 470", "avail": true}, {"model": "Lentes", "desc": "RayBan Meta Gen 2 - Polarized Gradient", "price": "USD 550", "avail": true}, {"model": "Lentes", "desc": "RayBan Meta Gen 2 - Transitions", "price": "USD 600", "avail": true}, {"model": "Lentes", "desc": "Oakley Meta", "price": "USD 570", "avail": true}, {"model": "Lentes", "desc": "Meta Quest 3 512GB", "price": "USD 760", "avail": true}, {"model": "Consolas", "desc": "PlayStation 5 Slim Digital", "price": "USD 790", "avail": true}, {"model": "Consolas", "desc": "PlayStation 5 Slim Física", "price": "USD 880", "avail": true}, {"model": "Consolas", "desc": "Play Station Pro", "price": "USD 1.420", "avail": true}, {"model": "Consolas", "desc": "Joystick Dualsense", "price": "USD 95", "avail": true}, {"model": "Consolas", "desc": "Nintendo Switch 2", "price": "USD 640", "avail": true}, {"model": "Consolas", "desc": "Volante Logitech G29", "price": "USD 440", "avail": true}, {"model": "Consolas", "desc": "XBOX Serie X", "price": "USD 1.125", "avail": true}]</script>
+<script>
+let   CAT      = "mac";      // parser en uso
+const DEFAULT_CAT = "macbook";
+
+const WA       = "5491135232818";
+
+/* ---------- CSV ---------- */
+function parseCSV(text){
+  const rows=[]; let row=[], cell="", q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){ if(c==='"'){ if(text[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
+    else if(c==='"') q=true;
+    else if(c===','){ row.push(cell); cell=""; }
+    else if(c==='\n'){ row.push(cell); rows.push(row); row=[]; cell=""; }
+    else if(c!=='\r') cell+=c;
+  }
+  if(cell.length||row.length){ row.push(cell); rows.push(row); }
+  return rows;
+}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const na =s=>/^#n\/a$/i.test((s||"").trim());
+function sizeVal(c){ const n=parseFloat(c); return /TB/i.test(c)?n*1024:n; }
+function normStore(s){
+  const t=(s||"").toUpperCase().replace(/\s+/g,"");
+  let m=t.match(/(\d+)TB/); if(m) return m[1]+" TB";
+  m=t.match(/(\d+)GB/);     if(m) return m[1]+" GB";
+  m=t.match(/(\d+)SSD/);    if(m) return m[1]+" GB";
+  return "";
+}
+
+/* ---------- parser genérico (todas las pestañas menos Windows) ----------
+   Todas comparten la misma forma: una fila de encabezado con "Precio USD",
+   la descripción en la columna de al lado, y arriba una fila con el título
+   del bloque. Las columnas de CODIGO y Precio ARS quedan afuera.          */
+function parseGeneric(rows){
+  const groups=[]; let g=null, pIdx=-1, dIdx=-1, cIdx=-1, label="", pend="";
+  const blank=r=>r.every(c=>!(c||"").trim());
+  const cells=r=>r.map(c=>(c||"").trim());
+  for(const raw of rows){
+    const r=cells(raw);
+    if(blank(raw)){ g=null; continue; }
+    const p=r.findIndex(c=>/^precio\s*(usd|u\$s)$/i.test(c));
+    if(p>-1){                                   // fila de encabezado
+      pIdx=p; cIdx=r.findIndex(c=>/^colores$/i.test(c));
+      dIdx=-1;
+      for(let j=p-1;j>=0;j--) if(r[j]){ dIdx=j; break; }
+      label=dIdx>-1?r[dIdx]:"";
+      g={name:pend||"", colors:[], items:[], label};
+      groups.push(g); continue;
+    }
+    const filled=r.filter(Boolean);
+    if(filled.length===1 && pIdx===-1 || (filled.length===1 && !g)){ pend=filled[0]; continue; }
+    if(filled.length===1){ pend=filled[0]; g=null; continue; }   // título del próximo bloque
+    if(!g || pIdx===-1) continue;
+    if(cIdx>-1 && (raw[cIdx]||"").trim())
+      g.colors=(raw[cIdx]||"").split("\n").map(x=>x.trim()).filter(Boolean);
+    const desc=(raw[dIdx]||"").trim(), price=(raw[pIdx]||"").trim();
+    if(!desc || !price || na(desc) || /^#(ref|value)/i.test(price)) continue;
+    // "1TB GB" y "512 GB " son solo capacidad: se muestran normalizados.
+    // "256 GB - WiFi + Cell" lleva más datos, se deja tal cual.
+    const soloCap=/^\s*\d+\s*(GB|TB)(\s*GB)?\s*$/i.test(desc);
+    g.items.push({model:g.name, colors:g.colors,
+                  desc:(soloCap?normStore(desc):desc).replace(/\s+/g," "),
+                  price, avail:!na(price) && !/ingresando|consultar/i.test(price)});
+  }
+  const items=[];
+  groups.forEach(gr=>gr.items.forEach(i=>{ i.colors=gr.colors; items.push(i); }));
+  return {items, groups, label:(groups[0]||{}).label||""};
+}
+
+/* Si la columna que describe la variante tiene pocos valores y son cortos
+   (Capacidad, Tamaño…), se convierte sola en filtro de chips. Si son largos
+   o hay demasiados (nombres de producto), la categoría va sin filtro.      */
+function autoFiltro(d){
+  const cap=/^\d+\s*(GB|TB)/i;
+  d.items.forEach(i=> i.autoval = i.desc);
+  let v=[...new Set(d.items.map(i=>i.autoval).filter(Boolean))];
+
+  // Si la mayoría de los valores son capacidades, el filtro se arma solo con esas
+  // (así el bloque de accesorios del final de iPhone no ensucia los chips de GB).
+  const caps=v.filter(x=>cap.test(x));
+  if(caps.length>=v.length/2) v=caps;
+
+  // Valores todos distintos = son nombres de producto, no un atributo: no sirve filtrar.
+  const compartido = d.items.filter(i=>v.includes(i.autoval)).length / v.length;
+  const ok = v.length>=2 && v.length<=12 && compartido>=1.5 && !v.some(x=>x.length>24);
+
+  if(ok){
+    const capLike=v.every(x=>/^\d+\s*(GB|TB)$/i.test(x));
+    const capIni=v.every(x=>cap.test(x));   // "256 GB - WiFi + Cell"
+    return [{key:"autoval",
+             label:capLike?"Almacenamiento":capIni?"Capacidad":(d.label||"Opciones"),
+             values:v, sort:capLike?((a,b)=>sizeVal(a)-sizeVal(b)):undefined}];
+  }
+  // Último intento: si toda variante arranca con la capacidad (iPad: "256 GB - WiFi + Cell"),
+  // se filtra por capacidad aunque el texto completo sea largo.
+  if(v.length && v.every(x=>cap.test(x))){
+    d.items.forEach(i=> i.autoval = cap.test(i.desc) ? normStore(i.desc) : "");
+    const w=[...new Set(d.items.map(i=>i.autoval).filter(Boolean))];
+    if(w.length>=2 && w.length<=12)
+      return [{key:"autoval", label:"Almacenamiento", values:w,
+               sort:(a,b)=>sizeVal(a)-sizeVal(b)}];
+  }
+  return [];
+}
+
+/* ---------- MacBook: filtros propios ---------- */
+function enrichMac(d){
+  d.items.forEach(i=>{
+    const spec=i.desc, m=i.model;
+    i.linea = /\bAir\b/i.test(m) ? "MacBook Air"
+            : /\bPro\b/i.test(m) ? "MacBook Pro"
+            : /\bNeo\b/i.test(m) ? "MacBook Neo" : m;
+    const tam  = (m.match(/(\d{2}(?:\.\d)?)\s*"/)||[])[1];
+    const chip = (spec.match(/^(M\d\s*(?:Pro|Max)?|A\d+\s*Pro?)/i)||[])[1];
+    const ram  = (spec.match(/(\d+)\s*GB\s*-/i)||[])[1];
+    i.tam  = tam?tam+'"':"";
+    i.chip = chip?chip.replace(/\s+/g," ").trim():"";
+    i.ram  = ram?ram+" GB":"";
+    i.ssd  = normStore(spec.split("-").pop()||"");
+    i.desc = spec.replace(/\s*-\s*/g," · ");
+  });
+  return [
+    {key:"linea", label:"Línea"},
+    {key:"tam",   label:"Tamaño",         sort:(a,b)=>parseFloat(a)-parseFloat(b)},
+    {key:"chip",  label:"Chip"},
+    {key:"ram",   label:"RAM",            sort:(a,b)=>parseInt(a)-parseInt(b)},
+    {key:"ssd",   label:"Almacenamiento", sort:(a,b)=>sizeVal(a)-sizeVal(b)}
+  ];
+}
+
+/* ---------- Windows ---------- */
+function parseWin(rows){
+  const items=[]; let marca="", tipo="Notebook", cur=null;
+  const push=()=>{ if(cur) items.push(cur); cur=null; };
+  for(const r of rows){
+    const a=(r[0]||"").trim(), price=(r[1]||"").trim(), stk=(r[2]||"").trim();
+    if(!a) continue;
+    // encabezado de marca: celda sola, en mayúsculas, sin precio
+    if(!price && a===a.toUpperCase() && a.length<28 && !/[:.]/.test(a)){
+      push();
+      const t = /GAMER/.test(a) ? "Gamer"
+              : /ALL IN ONE/.test(a) ? "All in One"
+              : /MONITOR/.test(a) ? "Monitor" : "Notebook";
+      marca = a.replace(/\s*(GAMER|ALL IN ONE|MONITOR.*)$/,"").trim();
+      tipo  = t; continue;
+    }
+    if(price){                                   // fila de producto
+      push();
+      cur={ marca, tipo, name:a.replace(/\s+/g," ").trim(), price,
+            avail: stk.toUpperCase()==="STK", stk, specs:[] };
+      continue;
+    }
+    if(cur) cur.specs.push(a);                   // filas de specs
+  }
+  push();
+  return {items: items.map(p=>{
+    const s=p.specs.join(" ");
+    const ram=(s.match(/Memory[:;]?\s*(\d+)\s*GB/i)||[])[1];
+    // el proveedor escribe "Storage:" y a veces "Storage;" — y algún equipo no lo trae
+    const st =(s.match(/Storage[:;]?\s*(\d+)\s*(TB|GB)/i)
+            || s.match(/(\d+)\s*(TB|GB)\s*(?:M\.2|SSD|PCIe|Solid State)/i) || []);
+    const scr=(p.name.match(/(\d{2}(?:\.\d)?)\s*"/)||s.match(/Display:\s*(\d{2}(?:\.\d)?)\s*"/)||[])[1];
+    const gpu=(s.match(/(RTX\s*\d{4}\s*(?:Ti)?|GTX\s*\d{4}|Radeon\s*RX\s*\d+)/i)||[])[1];
+    return {...p,
+      ram: ram?ram+" GB":"",
+      ssd: st[1]?st[1]+" "+st[2].toUpperCase():"",
+      pantalla: scr?scr+'"':"",
+      gpu: gpu?gpu.replace(/\s+/g," ").toUpperCase():"",
+      graficos: gpu?"Placa dedicada":"Gráficos integrados",
+      disponible: p.avail?"Con stock":"A pedido",
+      spec: s.replace(/\s+/g," ").trim()
+    };
+  }), style:"selects", group:"marca", filters:[
+    {key:"tipo",      label:"Tipo"},
+    {key:"marca",     label:"Marca"},
+    {key:"ram",       label:"RAM",             sort:(a,b)=>parseInt(a)-parseInt(b)},
+    {key:"ssd",       label:"Almacenamiento",  sort:(a,b)=>sizeVal(a)-sizeVal(b)},
+    {key:"pantalla",  label:"Pantalla",        sort:(a,b)=>parseFloat(a)-parseFloat(b)},
+    {key:"graficos",  label:"Gráficos"},
+    {key:"disponible",label:"Disponibilidad"}
+  ]};
+}
+
+/* ---------- motor ---------- */
+let DATA={items:[],filters:[]}, sel={}, onlyStock=false;
+
+function values(f, base){
+  let v=[...new Set(base.map(i=>i[f.key]).filter(Boolean))];
+  if(f.values) v=v.filter(x=>f.values.includes(x));
+  return f.sort ? v.sort(f.sort) : v.sort();
+}
+function matches(i, skip){
+  for(const f of DATA.filters){
+    if(f.key===skip) continue;
+    if(sel[f.key] && i[f.key]!==sel[f.key]) return false;
+  }
+  return !(onlyStock && !i.avail);
+}
+function visible(){ return DATA.items.filter(i=>matches(i,null)); }
+
+function buildFilters(){
+  const box=document.getElementById("filters");
+  if(DATA.style==="chips"){
+    const f=DATA.filters[0];
+    box.innerHTML=`<p class="flabel">${f.label}</p><div class="chips" id="chips"></div>
+      <div class="bar"><span class="count" id="count"></span></div>`;
+    const c=document.getElementById("chips");
+    c.innerHTML=[`<button class="chip" data-v="" aria-pressed="true">Todos</button>`]
+      .concat(values(f,DATA.items).map(v=>`<button class="chip" data-v="${esc(v)}">${esc(v)}</button>`)).join("");
+    c.addEventListener("click",e=>{
+      const b=e.target.closest(".chip"); if(!b) return;
+      sel[f.key]=b.dataset.v||null;
+      [...c.children].forEach(x=>x.setAttribute("aria-pressed",x===b));
+      render();
+    });
+  }else{
+    box.innerHTML=`<div class="selects">${DATA.filters.map(f=>
+      `<div class="fld"><label for="s_${f.key}">${f.label}</label>
+        <select id="s_${f.key}" data-k="${f.key}"></select></div>`).join("")}</div>
+      <div class="bar"><span class="count" id="count"></span>
+        <button class="clear" id="clear">Limpiar filtros</button></div>`;
+    box.addEventListener("change",e=>{
+      const s=e.target.closest("select"); if(!s) return;
+      sel[s.dataset.k]=s.value||null; render();
+    });
+    document.getElementById("clear").addEventListener("click",()=>{ sel={}; render(); });
+  }
+  render();
+}
+function syncSelects(){
+  for(const f of DATA.filters){
+    const s=document.getElementById("s_"+f.key); if(!s) continue;
+    const base=DATA.items.filter(i=>matches(i,f.key));
+    const opts=values(f,base);
+    if(sel[f.key] && !opts.includes(sel[f.key])) opts.push(sel[f.key]);
+    s.innerHTML=`<option value="">Todos</option>`+
+      opts.map(v=>`<option value="${esc(v)}"${sel[f.key]===v?" selected":""}>${esc(v)}</option>`).join("");
+    s.classList.toggle("on", !!sel[f.key]);
+  }
+  const any=Object.values(sel).some(Boolean);
+  const c=document.getElementById("clear"); if(c) c.style.display=any?"inline":"none";
+}
+
+function render(){
+  if(DATA.style==="selects") syncSelects();
+  const vis=visible();
+  const cnt=document.getElementById("count");
+  if(cnt) cnt.textContent=`${vis.length} ${vis.length===1?"equipo":"equipos"}`;
+  const list=document.getElementById("list");
+  if(!vis.length){
+    list.innerHTML='<div class="empty">No hay equipos con esa combinación.<br>Escribinos y te lo conseguimos.</div>';
+    return;
+  }
+  list.innerHTML = CAT==="win" ? renderWin(vis) : renderGrouped(vis);
+}
+function waLink(txt){ return `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`; }
+
+function renderGrouped(vis){
+  const key = DATA.group || "model";
+  // El estilo de fila se decide por categoría, no por fila: o son todas variantes
+  // cortas (256 GB) o son todas nombres de producto. Mezclarlo se ve desprolijo.
+  const corta = DATA.items.filter(i=>i.desc.length<16).length > DATA.items.length*0.8;
+  // Categorías donde la variante es directamente el nombre del producto (AirPods, DJI…)
+  const nombre = !corta && DATA.items.every(i=>!/\d+\s*(GB|TB)|core/i.test(i.desc));
+  const groups=[]; const idx={};
+  vis.forEach(i=>{ const k=i[key];
+    if(!(k in idx)){ idx[k]=groups.length; groups.push({k, colors:i.colors||[], items:[]}); }
+    groups[idx[k]].items.push(i); });
+  return groups.map(g=>`
+    <section class="model">
+      <h2>${esc(g.k)}</h2>
+      ${g.colors.length?`<div class="colors"><b>Colores:</b> ${g.colors.map(esc).join(" · ")}</div>`:""}
+      ${g.items.map(i=>`
+        <div class="row${corta?"":" long"}">
+          <span class="${corta?"cap":"spec"+(nombre?" name":"")}">${esc(i.desc)}</span>
+          ${i.avail
+            ? `<span class="price">${esc(i.price)}</span>
+               <a class="wa" target="_blank" rel="noopener" href="${waLink(
+                 `Hola! Me interesa el ${i.model} ${i.desc} — ${i.price}`)}">Consultar</a>`
+            : `<span class="soon">Ingresando</span>`}
+        </div>`).join("")}
+    </section>`).join("");
+}
+
+function renderWin(vis){
+  const groups=[]; const idx={};
+  vis.forEach(i=>{ const k=i.marca+(i.tipo!=="Notebook"?" · "+i.tipo:"");
+    if(!(k in idx)){ idx[k]=groups.length; groups.push({k,items:[]}); }
+    groups[idx[k]].items.push(i); });
+  return groups.map(g=>`
+    <div class="group"><h3>${esc(g.k)}</h3>
+    ${g.items.map(p=>`
+      <article class="prod">
+        <h2>${esc(p.name)}</h2>
+        <div class="pills">
+          ${p.ram?`<i>${esc(p.ram)} RAM</i>`:""}
+          ${p.ssd?`<i>${esc(p.ssd)} SSD</i>`:""}
+          ${p.pantalla?`<i>${esc(p.pantalla)}</i>`:""}
+          ${p.gpu?`<i class="gpu">${esc(p.gpu)}</i>`:""}
+        </div>
+        <div class="foot">
+          ${p.avail
+            ? `<span class="price" style="margin-left:0">${esc(p.price)}</span>
+               <a class="wa" target="_blank" rel="noopener"
+                  href="${waLink(`Hola! Me interesa la ${p.name} — ${p.price}`)}">Consultar</a>`
+            : `<span class="soon" style="margin-left:0">Sin stock · consultar ingreso</span>`}
+        </div>
+        ${p.spec?`<details class="full"><summary>Ver ficha completa</summary><p>${esc(p.spec)}</p></details>`:""}
+      </article>`).join("")}
+    </div>`).join("");
+}
+
+/* ---------- categorías ---------- */
+const CATS = [
+  {
+    "key": "iphone",
+    "label": "iPhone",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "macbook",
+    "label": "MacBook",
+    "parser": "mac",
+    "mode": "json"
+  },
+  {
+    "key": "windows",
+    "label": "Windows",
+    "parser": "win",
+    "mode": "csv",
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSAbORWkzoQ-0MXJ1ykvdpvdAbCop-S-9M7Jh9bnjaZGkLOH0lDGYMSEm3VaMzNWJ0Qk65gAEU7t1n/pub?gid=661876936&single=true&output=csv"
+  },
+  {
+    "key": "ipad",
+    "label": "iPad",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "imac",
+    "label": "iMac · Mac mini",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "watch",
+    "label": "Watch",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "accesorios",
+    "label": "Accesorios Apple",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "samsung",
+    "label": "Samsung",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "dji",
+    "label": "DJI",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "sonos",
+    "label": "SONOS",
+    "parser": "gen",
+    "mode": "json"
+  },
+  {
+    "key": "otros",
+    "label": "Otros",
+    "parser": "gen",
+    "mode": "json"
+  }
+];
+const CACHE = {};
+
+function catActual(){
+  const h=(location.hash||"").replace("#","").toLowerCase();
+  return CATS.find(c=>c.key===h) || CATS.find(c=>c.key===DEFAULT_CAT) || CATS[0];
+}
+function pintarNav(act){
+  const n=document.getElementById("cats");
+  if(CATS.length<2){ n.style.display="none"; return; }
+  n.innerHTML=CATS.map(c=>
+    `<a href="#${c.key}" class="${c.key===act.key?"on":""}">${esc(c.label)}</a>`).join("");
+  const on=n.querySelector("a.on");
+  if(on) on.scrollIntoView({block:"nearest",inline:"center"});
+}
+
+async function traer(cat){
+  if(CACHE[cat.key]) return CACHE[cat.key];
+
+  // Categorías que salen de la planilla de costos: los datos ya vienen armados
+  // desde el generador, porque esa planilla es privada y el navegador no la puede leer.
+  if(cat.mode==="json"){
+    const d={items:JSON.parse(document.getElementById("datos-"+cat.key).textContent),
+             label:cat.filtro||""};
+    d.style="chips"; d.group="model";
+    d.filters = cat.parser==="mac" ? enrichMac(d) : autoFiltro(d);
+    if(d.filters.length>2) d.style="selects";
+    return CACHE[cat.key]=d;
+  }
+
+  let text=null;
+  try{ const r=await fetch(cat.url,{cache:"no-store"}); if(r.ok) text=await r.text(); }catch(e){}
+  let local=false;
+  if(!text){
+    const el=document.getElementById("csv-"+cat.key);
+    if(el){ text=el.textContent; local=true; }
+  }
+  if(!text) return null;
+  const s=document.getElementById("stale");
+  s.style.display = local ? "block" : "none";
+  if(local) s.textContent="Vista de prueba: no se pudo leer la planilla en vivo (pasa al abrir el archivo local). Se muestran los datos de la última copia.";
+  const rows=parseCSV(text);
+  let d;
+  if(cat.parser==="win"){ d=parseWin(rows); }
+  else{
+    d=parseGeneric(rows);
+    d.style="chips"; d.group="model";
+    d.filters = cat.parser==="mac" ? enrichMac(d) : autoFiltro(d);
+    if(d.filters.length>2) d.style="selects";
+  }
+  CACHE[cat.key]=d;
+  return d;
+}
+
+async function mostrar(){
+  const cat=catActual();
+  document.getElementById("titulo").textContent=cat.label;
+  document.title="Catálogo "+cat.label+" · TPTecno";
+  pintarNav(cat);
+  sel={};
+  document.getElementById("filters").innerHTML="";
+  document.getElementById("list").innerHTML='<div class="loading">Cargando…</div>';
+  const d=await traer(cat);
+  if(!d){ document.getElementById("list").innerHTML=
+    '<div class="empty">No se pudo cargar esta categoría. Probá de nuevo en un momento.</div>'; return; }
+  DATA=d; CAT=cat.parser;
+  if(!DATA.filters.length){
+    document.getElementById("filters").innerHTML="";
+    render();
+  }else buildFilters();
+}
+window.addEventListener("hashchange",mostrar);
+mostrar();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+# Regenera el catálogo desde la planilla de costos y lo publica en GitHub Pages.
+#
+# Requiere un secret llamado GCLOUD_SA_JSON con el contenido de gcloud_sa.json
+# (Settings → Secrets and variables → Actions → New repository secret).
+# La credencial nunca queda en el repo: se escribe en disco durante la corrida
+# y se va con la máquina virtual al terminar.
+name: Publicar catálogo
+
+# Por ahora solo se dispara a mano (botón "Run workflow" en la pestaña Actions).
+# Cuando exista el secret GCLOUD_SA_JSON y Pages esté en modo "GitHub Actions",
+# descomentar el schedule para que se regenere solo.
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "5 12-23 * * 1-6"   # cada hora, 9 a 20 hora AR, lunes a sábado
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet gspread google-auth
+
+      - name: Credencial de Google
+        env:
+          SA: ${{ secrets.GCLOUD_SA_JSON }}
+        run: printf '%s' "$SA" > gcloud_sa.json
+
+      - name: Generar las páginas
+        run: python generador/build.py --out _site
+
+      - name: Dejar solo lo que se publica
+        run: |
+          rm -f gcloud_sa.json _site/demo_socio.html
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  desplegar:
+    needs: publicar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

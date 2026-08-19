@@ -1,0 +1,6 @@
+# La credencial del service account NUNCA va al repo
+gcloud_sa.json
+*.json.key
+.env*
+__pycache__/
+demo_socio.html
