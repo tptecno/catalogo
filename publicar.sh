@@ -1,21 +1,27 @@
 #!/bin/bash
 # Regenera el catálogo desde la planilla de costos y lo publica.
-#   ./publicar.sh
-# Tarda ~1 minuto: ~30s de leer la planilla, ~35s de GitHub Pages.
-set -e
+#
+#   ./publicar.sh          a mano
+#
+# Corre solo cada 15 minutos por launchd (com.tptecno.catalogo).
+# Log: ~/Library/Logs/tptecno-catalogo.log
+set -eo pipefail
 cd "$(dirname "$0")"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-echo "→ Leyendo la planilla de costos…"
-../.venv/bin/python generador/build.py --out .
+ahora() { date '+%d/%m %H:%M:%S'; }
+
+../.venv/bin/python generador/build.py --out . >/tmp/catalogo_build.log 2>&1 || {
+  echo "$(ahora)  ✗ falló la generación:"; tail -5 /tmp/catalogo_build.log; exit 1;
+}
 
 if git diff --quiet; then
-  echo "✓ Sin cambios: el catálogo publicado ya está al día."
+  echo "$(ahora)  · sin cambios"
   exit 0
 fi
 
-echo "→ Subiendo…"
+cambios=$(git diff --stat | tail -1)
 git add -A
 git commit -qm "Actualización de precios $(date '+%d/%m/%Y %H:%M')"
 git push -q origin main
-echo "✓ Listo. En ~35 segundos queda en https://tptecno.github.io/catalogo/"
+echo "$(ahora)  ✓ publicado ($cambios)"
