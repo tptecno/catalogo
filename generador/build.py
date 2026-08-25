@@ -89,6 +89,20 @@ def parse_costos(rows):
     return items
 
 
+def leer_pestana(pestana, intentos=4):
+    """Google limita las lecturas por minuto. Si pega el tope (429), espera y
+    reintenta en vez de abortar la publicación."""
+    for n in range(intentos):
+        try:
+            return sheets.tab(COSTOS, pestana).get_all_values()
+        except Exception as e:
+            if "429" not in str(e) or n == intentos - 1:
+                raise
+            espera = 20 * (n + 1)
+            print(f"    ⚠ tope de lecturas de Google, reintento en {espera}s")
+            time.sleep(espera)
+
+
 def bajar(url, intentos=3):
     """Google a veces corta la respuesta a la mitad (IncompleteRead). Con timeout y
     reintentos, en vez de quedarse colgado."""
@@ -138,7 +152,7 @@ def main():
         if parser == "win":
             resumen.append(f"{label:18} → catálogo publicado, en vivo")
             continue
-        items = parse_costos(sheets.tab(COSTOS, pestana).get_all_values())
+        items = parse_costos(leer_pestana(pestana))
         col = colores_publicados(gid) if gid else {}
         pegados = 0
         for i in items:
