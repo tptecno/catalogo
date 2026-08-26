@@ -19,7 +19,7 @@ algo=0
 
 # 1) El catálogo general. Solo se suben los HTML generados: una corrida desatendida
 #    nunca publica cambios de código que alguien haya dejado a medias.
-PAGINAS="index.html iphone.html macbook.html windows.html"
+PAGINAS="index.html iphone.html macbook.html windows.html favicon.ico tp-32.png tp-180.png"
 if ! git diff --quiet -- $PAGINAS; then
   cambios=$(git diff --stat -- $PAGINAS | tail -1)
   git add $PAGINAS
@@ -36,8 +36,9 @@ publicar_subdominio() {   # $1 = repo en ~/tptecno   $2 = página que va como in
   local repo="$HOME/tptecno/$1"
   [ -d "$repo/.git" ] || return 0
   cp "$2" "$repo/index.html"
-  if ! git -C "$repo" diff --quiet -- index.html; then
-    git -C "$repo" add index.html
+  cp favicon.ico tp-32.png tp-180.png "$repo/"
+  if ! git -C "$repo" diff --quiet; then
+    git -C "$repo" add index.html favicon.ico tp-32.png tp-180.png
     git -C "$repo" commit -qm "Actualización de precios $(date '+%d/%m/%Y %H:%M')"
     git -C "$repo" push -q origin main
     echo "$(ahora)  ✓ $1 actualizado"

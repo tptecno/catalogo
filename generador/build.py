@@ -17,7 +17,7 @@ Uso:
     python3 build.py --out ../sitio  # las escribe en otra carpeta
     python3 build.py --dry-run       # solo muestra qué leyó, no escribe nada
 """
-import sys, re, time, json, base64, pathlib, urllib.request, warnings, csv, io
+import sys, re, time, json, shutil, pathlib, urllib.request, warnings, csv, io
 warnings.filterwarnings("ignore")
 # sheets.py y la credencial viven al lado del script o en la carpeta de arriba
 # (local: ~/Desktop/claude · en CI: la raíz del repo)
@@ -174,13 +174,16 @@ def main():
 
     # El ícono va incrustado en el HTML (data URI) y no como archivo suelto: así
     # viaja con la página a cualquier repo/subdominio sin tener que copiarlo.
-    ico = lambda n: base64.b64encode((here / "marca" / n).read_bytes()).decode()
-    favicon = (
-        f'<link rel="icon" type="image/png" sizes="32x32" '
-        f'href="data:image/png;base64,{ico("tp-32.png")}">\n'
-        f'<link rel="apple-touch-icon" '
-        f'href="data:image/png;base64,{ico("tp-180.png")}">\n'
-        f'<meta name="theme-color" content="#FF395D">')
+    # El ícono va como ARCHIVO, no incrustado: Safari, los marcadores y los
+    # buscadores ignoran los data: URI y piden /favicon.ico directamente.
+    # Las rutas son relativas para que funcionen igual bajo el dominio propio
+    # que bajo tptecno.github.io/catalogo/.
+    for archivo in ("favicon.ico", "tp-32.png", "tp-180.png"):
+        shutil.copy(here / "marca" / archivo, salida / archivo)
+    favicon = ('<link rel="icon" href="favicon.ico" sizes="any">\n'
+               '<link rel="icon" type="image/png" sizes="32x32" href="tp-32.png">\n'
+               '<link rel="apple-touch-icon" href="tp-180.png">\n'
+               '<meta name="theme-color" content="#FF395D">')
     tpl = tpl.replace("__FAVICON__", favicon)
     cats_js = json.dumps([
         {"key": k, "label": lb, "parser": p,
