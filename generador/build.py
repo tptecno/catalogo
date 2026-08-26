@@ -17,7 +17,7 @@ Uso:
     python3 build.py --out ../sitio  # las escribe en otra carpeta
     python3 build.py --dry-run       # solo muestra qué leyó, no escribe nada
 """
-import sys, re, time, json, pathlib, urllib.request, warnings, csv, io
+import sys, re, time, json, base64, pathlib, urllib.request, warnings, csv, io
 warnings.filterwarnings("ignore")
 # sheets.py y la credencial viven al lado del script o en la carpeta de arriba
 # (local: ~/Desktop/claude · en CI: la raíz del repo)
@@ -171,6 +171,17 @@ def main():
         return
 
     tpl = (here / "_template.html").read_text()
+
+    # El ícono va incrustado en el HTML (data URI) y no como archivo suelto: así
+    # viaja con la página a cualquier repo/subdominio sin tener que copiarlo.
+    ico = lambda n: base64.b64encode((here / "marca" / n).read_bytes()).decode()
+    favicon = (
+        f'<link rel="icon" type="image/png" sizes="32x32" '
+        f'href="data:image/png;base64,{ico("tp-32.png")}">\n'
+        f'<link rel="apple-touch-icon" '
+        f'href="data:image/png;base64,{ico("tp-180.png")}">\n'
+        f'<meta name="theme-color" content="#FF395D">')
+    tpl = tpl.replace("__FAVICON__", favicon)
     cats_js = json.dumps([
         {"key": k, "label": lb, "parser": p,
          **({"mode": "json"} if p != "win" else
