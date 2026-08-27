@@ -43,6 +43,8 @@ CATS = [
     ("accesorios","Accesorios Apple", "Accesorios Apple",          "gen", "840295081"),
     ("samsung",   "Samsung",          "Samsung",                   "gen", "1897995502"),
     ("dji",       "DJI",              "DJI",                       "gen", "1621130278"),
+    # Cámaras no está en el catálogo publicado: no hay colores que cruzar
+    ("camaras",   "Cámaras",          "Camaras",                   "gen", None),
     ("sonos",     "SONOS",            "Sonos",                     "gen", "1874994252"),
     ("otros",     "Otros",            "Otros",                     "gen", "1976460266"),
 ]
