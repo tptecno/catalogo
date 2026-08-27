@@ -216,7 +216,7 @@ def main():
 
     for fname, default in [("index.html", ""), ("iphone.html", "iphone"),
                            ("macbook.html", "macbook"), ("windows.html", "windows")]:
-        lb = next((x for k, x, _, _, _ in CATS if k == default), "TPTecno")
+        lb = next((x for k, x, _, _, _ in CATS if k == default), "tptecno")
         html = (tpl.replace("__TITULO__", lb).replace("__CATS__", cats_js)
                    .replace("__DEFAULT__", default)
                    .replace("__CAT__", next((p for k, _, _, p, _ in CATS if k == default), "gen"))
@@ -230,7 +230,7 @@ def main():
                 '<meta name="viewport" content="width=device-width,initial-scale=1">',
                 '<meta name="robots" content="noindex">']:
         demo = demo.replace(tag, "")
-    demo = demo.replace("<title>Catálogo iPhone · TPTecno</title>", "<title>Catálogo TPTecno</title>")
+    demo = demo.replace("<title>Catálogo iPhone · tptecno</title>", "<title>Catálogo tptecno</title>")
     demo = demo.replace('<div id="stale" class="stale"></div>',
                         '<div class="demo">Vista de demostración. Los precios salen de la planilla '
                         'de costos y quedan fijos en esta copia; publicada, la página se regenera '
