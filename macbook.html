@@ -32,6 +32,20 @@
     transition:.15s;white-space:nowrap}
   nav.cats a:hover{border-color:#c9c9d1}
   nav.cats a.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  /* ---- portada ---- */
+  .marca{display:flex;flex-direction:column;align-items:center;gap:12px;padding:26px 0 6px}
+  .marca img{width:64px;height:64px;border-radius:16px}
+  .marca h1{margin:0;font-size:30px;letter-spacing:-.02em}
+  .marca p{margin:0;color:var(--muted);font-size:14px;text-align:center;max-width:44ch}
+  .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));
+    gap:10px;margin-top:22px}
+  .rejilla a{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:15px 16px;transition:.15s}
+  .rejilla a:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .rejilla b{font-size:15px;font-weight:650}
+  .rejilla span{font-size:12.5px;color:var(--muted)}
+  .aviso{margin-top:22px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
   .loading{text-align:center;color:var(--muted);padding:44px 10px;font-size:13px}
   .filters{position:sticky;top:0;z-index:5;background:var(--bg);
     padding:12px 0 10px;margin-top:12px;border-bottom:1px solid var(--line)}
@@ -462,18 +476,21 @@ const CATS = [
     "key": "iphone",
     "label": "iPhone",
     "parser": "gen",
+    "n": 16,
     "mode": "json"
   },
   {
     "key": "macbook",
     "label": "MacBook",
     "parser": "mac",
+    "n": 33,
     "mode": "json"
   },
   {
     "key": "windows",
     "label": "Windows",
     "parser": "win",
+    "n": 131,
     "mode": "csv",
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSAbORWkzoQ-0MXJ1ykvdpvdAbCop-S-9M7Jh9bnjaZGkLOH0lDGYMSEm3VaMzNWJ0Qk65gAEU7t1n/pub?gid=661876936&single=true&output=csv"
   },
@@ -481,62 +498,93 @@ const CATS = [
     "key": "ipad",
     "label": "iPad",
     "parser": "gen",
+    "n": 27,
     "mode": "json"
   },
   {
     "key": "imac",
     "label": "iMac · Mac mini",
     "parser": "gen",
+    "n": 22,
     "mode": "json"
   },
   {
     "key": "watch",
     "label": "Watch",
     "parser": "gen",
+    "n": 11,
     "mode": "json"
   },
   {
     "key": "accesorios",
     "label": "Accesorios Apple",
     "parser": "gen",
+    "n": 23,
     "mode": "json"
   },
   {
     "key": "samsung",
     "label": "Samsung",
     "parser": "gen",
+    "n": 14,
     "mode": "json"
   },
   {
     "key": "dji",
     "label": "DJI",
     "parser": "gen",
+    "n": 21,
     "mode": "json"
   },
   {
     "key": "sonos",
     "label": "SONOS",
     "parser": "gen",
+    "n": 11,
     "mode": "json"
   },
   {
     "key": "otros",
     "label": "Otros",
     "parser": "gen",
+    "n": 22,
     "mode": "json"
   }
 ];
 const CACHE = {};
 
+const HAY_PORTADA = !DEFAULT_CAT;      // solo el catálogo general abre en portada
 function catActual(){
   const h=(location.hash||"").replace("#","").toLowerCase();
-  return CATS.find(c=>c.key===h) || CATS.find(c=>c.key===DEFAULT_CAT) || CATS[0];
+  const c=CATS.find(x=>x.key===h);
+  if(c) return c;
+  if(HAY_PORTADA) return null;         // sin categoría en la URL: portada
+  return CATS.find(x=>x.key===DEFAULT_CAT) || CATS[0];
+}
+
+function portada(){
+  document.getElementById("titulo").parentElement.style.display="none";
+  document.getElementById("filters").innerHTML="";
+  document.title="Catálogo TPTecno";
+  document.getElementById("list").innerHTML=`
+    <div class="marca">
+      <img src="tp-180.png" alt="TPTecno">
+      <h1>Catálogo TPTecno</h1>
+      <p>Elegí una categoría para ver modelos, precios y disponibilidad.</p>
+    </div>
+    <div class="rejilla">
+      ${CATS.map(c=>`<a href="#${c.key}"><b>${esc(c.label)}</b>
+         <span>${c.n} ${c.n===1?"producto":"productos"}</span></a>`).join("")}
+    </div>
+    <p class="aviso">Enviamos en el día 🛵 · Efectivo / USD · Transferencia +3% · Crypto +2%<br>
+      Consultá por modelos o configuraciones que no figuren.</p>`;
 }
 function pintarNav(act){
   const n=document.getElementById("cats");
   if(CATS.length<2){ n.style.display="none"; return; }
-  n.innerHTML=CATS.map(c=>
-    `<a href="#${c.key}" class="${c.key===act.key?"on":""}">${esc(c.label)}</a>`).join("");
+  const inicio = HAY_PORTADA ? `<a href="#" class="${act?"":"on"}">Inicio</a>` : "";
+  n.innerHTML=inicio+CATS.map(c=>
+    `<a href="#${c.key}" class="${act&&c.key===act.key?"on":""}">${esc(c.label)}</a>`).join("");
   const on=n.querySelector("a.on");
   if(on) on.scrollIntoView({block:"nearest",inline:"center"});
 }
@@ -581,9 +629,11 @@ async function traer(cat){
 
 async function mostrar(){
   const cat=catActual();
+  pintarNav(cat);
+  if(!cat){ portada(); return; }
+  document.getElementById("titulo").parentElement.style.display="";
   document.getElementById("titulo").textContent=cat.label;
   document.title="Catálogo "+cat.label+" · TPTecno";
-  pintarNav(cat);
   sel={};
   document.getElementById("filters").innerHTML="";
   document.getElementById("list").innerHTML='<div class="loading">Cargando…</div>';
