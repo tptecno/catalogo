@@ -155,6 +155,7 @@ def colores_publicados(gid):
 
 def main():
     dry = "--dry-run" in sys.argv
+    cuenta = {}
     here = pathlib.Path(__file__).resolve().parent
     salida = here
     if "--out" in sys.argv:                      # dónde escribir los HTML
@@ -164,7 +165,11 @@ def main():
 
     for key, label, pestana, parser, gid in CATS:
         if parser == "win":
-            resumen.append(f"{label:18} → catálogo publicado, en vivo")
+            # Windows se lee en vivo en el navegador; acá solo se cuenta para la portada
+            texto = bajar(f"{PUB}?gid={WIN_GID}&single=true&output=csv")
+            filas = list(csv.reader(io.StringIO(texto))) if texto else []
+            cuenta[key] = sum(1 for r in filas if len(r) > 1 and r[1].strip())
+            resumen.append(f"{label:18} {cuenta[key]:3} productos · en vivo desde el catálogo")
             continue
         items = parse_costos(leer_pestana(pestana))
         col = colores_publicados(gid) if gid else {}
@@ -175,6 +180,7 @@ def main():
                 i["colors"] = c; pegados += 1
             i.pop("codigo", None)
         datos[key] = items
+        cuenta[key] = len(items)
         resumen.append(f"{label:18} {len(items):3} productos · "
                        f"{len(set(i['model'] for i in items))} bloques · {pegados} con colores")
 
@@ -200,7 +206,7 @@ def main():
                '<meta name="theme-color" content="#FF395D">')
     tpl = tpl.replace("__FAVICON__", favicon)
     cats_js = json.dumps([
-        {"key": k, "label": lb, "parser": p,
+        {"key": k, "label": lb, "parser": p, "n": cuenta.get(k, 0),
          **({"mode": "json"} if p != "win" else
             {"mode": "csv", "url": f"{PUB}?gid={WIN_GID}&single=true&output=csv"})}
         for k, lb, _, p, _ in CATS], ensure_ascii=False, indent=2)
@@ -208,12 +214,12 @@ def main():
         f'<script type="application/json" id="datos-{k}">{json.dumps(v, ensure_ascii=False)}</script>'
         for k, v in datos.items())
 
-    for fname, default in [("index.html", "iphone"), ("iphone.html", "iphone"),
+    for fname, default in [("index.html", ""), ("iphone.html", "iphone"),
                            ("macbook.html", "macbook"), ("windows.html", "windows")]:
-        lb = next(x for k, x, _, _, _ in CATS if k == default)
+        lb = next((x for k, x, _, _, _ in CATS if k == default), "TPTecno")
         html = (tpl.replace("__TITULO__", lb).replace("__CATS__", cats_js)
                    .replace("__DEFAULT__", default)
-                   .replace("__CAT__", next(p for k, _, _, p, _ in CATS if k == default))
+                   .replace("__CAT__", next((p for k, _, _, p, _ in CATS if k == default), "gen"))
                    .replace("__FALLBACKS__", bloques))
         (salida / fname).write_text(html)
         print(f"  {fname:14} {len(html)//1024} KB")
