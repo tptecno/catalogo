@@ -585,6 +585,7 @@ function pintarNav(act){
   const inicio = HAY_PORTADA ? `<a href="#" class="${act?"":"on"}">Inicio</a>` : "";
   n.innerHTML=inicio+CATS.map(c=>
     `<a href="#${c.key}" class="${act&&c.key===act.key?"on":""}">${esc(c.label)}</a>`).join("");
+  if(!act){ n.scrollLeft=0; return; }        // en la portada, la barra arranca al principio
   const on=n.querySelector("a.on");
   if(on) on.scrollIntoView({block:"nearest",inline:"center"});
 }
