@@ -478,6 +478,7 @@ const CATS = [
     "label": "iPhone",
     "parser": "gen",
     "n": 16,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -485,6 +486,7 @@ const CATS = [
     "label": "MacBook",
     "parser": "mac",
     "n": 33,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -492,6 +494,7 @@ const CATS = [
     "label": "Windows",
     "parser": "win",
     "n": 134,
+    "grupo": null,
     "mode": "csv",
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSAbORWkzoQ-0MXJ1ykvdpvdAbCop-S-9M7Jh9bnjaZGkLOH0lDGYMSEm3VaMzNWJ0Qk65gAEU7t1n/pub?gid=661876936&single=true&output=csv"
   },
@@ -500,6 +503,7 @@ const CATS = [
     "label": "iPad",
     "parser": "gen",
     "n": 27,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -507,6 +511,7 @@ const CATS = [
     "label": "iMac · Mac mini",
     "parser": "gen",
     "n": 22,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -514,6 +519,7 @@ const CATS = [
     "label": "Watch",
     "parser": "gen",
     "n": 11,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -521,6 +527,7 @@ const CATS = [
     "label": "Accesorios Apple",
     "parser": "gen",
     "n": 23,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -528,6 +535,7 @@ const CATS = [
     "label": "Samsung",
     "parser": "gen",
     "n": 14,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -535,6 +543,7 @@ const CATS = [
     "label": "DJI",
     "parser": "gen",
     "n": 24,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -542,6 +551,7 @@ const CATS = [
     "label": "Cámaras",
     "parser": "gen",
     "n": 52,
+    "grupo": "Marca",
     "mode": "json"
   },
   {
@@ -549,6 +559,7 @@ const CATS = [
     "label": "SONOS",
     "parser": "gen",
     "n": 11,
+    "grupo": null,
     "mode": "json"
   },
   {
@@ -556,6 +567,7 @@ const CATS = [
     "label": "Otros",
     "parser": "gen",
     "n": 22,
+    "grupo": null,
     "mode": "json"
   }
 ];
@@ -607,7 +619,9 @@ async function traer(cat){
     const d={items:JSON.parse(document.getElementById("datos-"+cat.key).textContent),
              label:cat.filtro||""};
     d.style="chips"; d.group="model";
-    d.filters = cat.parser==="mac" ? enrichMac(d) : autoFiltro(d);
+    d.filters = cat.parser==="mac" ? enrichMac(d)
+              : cat.grupo ? [{key:"model", label:cat.grupo}]   // el bloque es la marca
+              : autoFiltro(d);
     if(d.filters.length>2) d.style="selects";
     return CACHE[cat.key]=d;
   }
