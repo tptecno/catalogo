@@ -52,6 +52,14 @@ EXC = {"codigo", "código", "mayorista", "unit cost", "profit", "tato", "melman"
        "otros", "prov otro", "belgrano", "precio ars", "precio usd"}
 SIN_STOCK = ("ingresando", "sin stock", "consultar", "#n/a", "#value", "#ref")
 
+def estado_de(precio):
+    """Qué se le muestra al cliente cuando no hay precio publicable.
+    Se respeta lo que dice la planilla; si la celda está vacía, es sin stock."""
+    t = precio.strip()
+    if not t or t.lower().startswith("#"):
+        return "Sin stock"
+    return t.capitalize() if t.isupper() else t
+
 # La planilla escribe la capacidad de varias formas: "256GB", "512 GB ", "1TB GB".
 SOLO_CAP = re.compile(r"^\s*(\d+)\s*(GB|TB)(\s*GB)?\s*$", re.I)
 
@@ -80,12 +88,18 @@ def parse_costos(rows):
         if not grupo or pi < 0:
             continue
         desc, precio = c[di], c[pi]
-        if not desc or not precio or desc.lower() in EXC:
+        # Una fila sin precio igual es un producto: se lista como sin stock. Se pide
+        # código para no arrastrar filas sueltas que no son productos.
+        if not desc or desc.lower() in EXC or not (c[0] or precio):
             continue
-        items.append({"codigo": c[0], "model": grupo,
-                      "desc": normalizar(" ".join(desc.split())),
-                      "price": " ".join(precio.split()),
-                      "avail": not any(m in precio.lower() for m in SIN_STOCK)})
+        hay = bool(precio) and not any(m in precio.lower() for m in SIN_STOCK)
+        item = {"codigo": c[0], "model": grupo,
+                "desc": normalizar(" ".join(desc.split())), "avail": hay}
+        if hay:
+            item["price"] = " ".join(precio.split())
+        else:
+            item["estado"] = estado_de(precio)
+        items.append(item)
     return items
 
 

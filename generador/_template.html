@@ -411,7 +411,7 @@ function renderGrouped(vis){
             ? `<span class="price">${esc(i.price)}</span>
                <a class="wa" target="_blank" rel="noopener" href="${waLink(
                  `Hola! Me interesa el ${i.model} ${i.desc} — ${i.price}`)}">Consultar</a>`
-            : `<span class="soon">Ingresando</span>`}
+            : `<span class="soon">${esc(i.estado || "Sin stock")}</span>`}
         </div>`).join("")}
     </section>`).join("");
 }
