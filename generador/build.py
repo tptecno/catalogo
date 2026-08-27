@@ -49,6 +49,9 @@ CATS = [
     ("otros",     "Otros",            "Otros",                     "gen", "1976460266"),
 ]
 
+# Categorías donde el bloque ES la marca, así que se puede filtrar por él
+FILTRO_POR_BLOQUE = {"camaras": "Marca"}
+
 # Encabezados que nunca son el título de un bloque ni una descripción
 EXC = {"codigo", "código", "mayorista", "unit cost", "profit", "tato", "melman",
        "otros", "prov otro", "belgrano", "precio ars", "precio usd"}
@@ -209,6 +212,7 @@ def main():
     tpl = tpl.replace("__FAVICON__", favicon)
     cats_js = json.dumps([
         {"key": k, "label": lb, "parser": p, "n": cuenta.get(k, 0),
+         "grupo": FILTRO_POR_BLOQUE.get(k),
          **({"mode": "json"} if p != "win" else
             {"mode": "csv", "url": f"{PUB}?gid={WIN_GID}&single=true&output=csv"})}
         for k, lb, _, p, _ in CATS], ensure_ascii=False, indent=2)

@@ -508,7 +508,9 @@ async function traer(cat){
     const d={items:JSON.parse(document.getElementById("datos-"+cat.key).textContent),
              label:cat.filtro||""};
     d.style="chips"; d.group="model";
-    d.filters = cat.parser==="mac" ? enrichMac(d) : autoFiltro(d);
+    d.filters = cat.parser==="mac" ? enrichMac(d)
+              : cat.grupo ? [{key:"model", label:cat.grupo}]   // el bloque es la marca
+              : autoFiltro(d);
     if(d.filters.length>2) d.style="selects";
     return CACHE[cat.key]=d;
   }
