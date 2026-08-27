@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Catálogo iPhone · TPTecno</title>
+<title>Catálogo iPhone · tptecno</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="tp-32.png">
 <link rel="apple-touch-icon" href="tp-180.png">
@@ -565,11 +565,11 @@ function catActual(){
 function portada(){
   document.getElementById("titulo").parentElement.style.display="none";
   document.getElementById("filters").innerHTML="";
-  document.title="Catálogo TPTecno";
+  document.title="Catálogo tptecno";
   document.getElementById("list").innerHTML=`
     <div class="marca">
-      <img src="tp-180.png" alt="TPTecno">
-      <h1>Catálogo TPTecno</h1>
+      <img src="tp-180.png" alt="tptecno">
+      <h1>Catálogo tptecno</h1>
       <p>Elegí una categoría para ver modelos, precios y disponibilidad.</p>
     </div>
     <div class="rejilla">
@@ -634,7 +634,7 @@ async function mostrar(){
   if(!cat){ portada(); return; }
   document.getElementById("titulo").parentElement.style.display="";
   document.getElementById("titulo").textContent=cat.label;
-  document.title="Catálogo "+cat.label+" · TPTecno";
+  document.title="Catálogo "+cat.label+" · tptecno";
   sel={};
   document.getElementById("filters").innerHTML="";
   document.getElementById("list").innerHTML='<div class="loading">Cargando…</div>';
