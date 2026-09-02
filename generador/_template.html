@@ -93,6 +93,7 @@ __FAVICON__
   .pills i{font-style:normal;background:var(--pill);border-radius:7px;padding:4px 9px;
     font-size:12.5px;color:#3f3f46}
   .pills i.gpu{background:#eef4ff;color:#1e4bbf}
+  .pills i.cpu{background:#f0efe9;color:#4a4636;font-weight:600}
   .foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .more{appearance:none;border:0;background:none;color:var(--muted);font-size:12.5px;
     cursor:pointer;padding:0;text-decoration:underline}
@@ -277,6 +278,39 @@ function enrichMac(d){
 }
 
 /* ---------- Windows ---------- */
+/* El proveedor escribe el procesador de mil formas: "Core Ultra 9 processor 288V",
+   "1.6 gigahertz Intel Core Ultra 7 Series 258V (8-core)", "Ryzen AI 400 Series
+   Ryzen AI 9 465". Se normaliza a una etiqueta corta y legible. */
+const CPU_REGLAS=[
+  [/Core\s+Ultra\s+(X?\d)\s+(?:(?:processor|series)\s+)?(?:\d\s+)?(\d{3}[A-Za-z]*)/i, "Core Ultra $1 $2"],
+  [/Core\s+i(\d)\s*-?\s*(\d{4,5}[A-Za-z]*)/i,                                            "Core i$1 $2"],
+  [/Core(?:\(TM\))?\s+(\d)\s+(?:processor\s+)?(\d{3}[A-Za-z]*)/i,                       "Core $1 $2"],
+  [/Ryzen\s+AI\s+(\d)\s+(\d{3}[A-Za-z]*)/i,                                              "Ryzen AI $1 $2"],
+  [/Ryzen\s+AI\s+(\d{3}[A-Za-z]*)\s+Series/i,                                             "Ryzen AI $1"],
+  [/Ryzen\s+(\d)\s+(\d{3,4}[A-Za-z0-9]*)/i,                                               "Ryzen $1 $2"],
+  [/Snapdragon\s+(X\d?)\s*(Elite|Plus)?/i,                                                "Snapdragon $1 $2"],
+  [/Core\s+Ultra\s+(X?\d)\b/i,                                                            "Core Ultra $1"]
+];
+function procesador(s){
+  const m=s.match(/Processor[:;]?\s*([^,]+)/i);
+  if(!m) return "";
+  const t=m[1].replace(/[®™]/g,"");
+  for(const [re_,fmt] of CPU_REGLAS){
+    const r=t.match(re_);
+    if(r){
+      let out=fmt;
+      for(let i=1;i<r.length;i++){
+        let g=(r[i]||"");
+        g = /\d/.test(g) ? g.toUpperCase()
+                          : g.charAt(0).toUpperCase()+g.slice(1).toLowerCase();
+        out=out.replace("$"+i, g);
+      }
+      return out.replace(/\s+/g," ").trim();
+    }
+  }
+  return t.replace(/\s*\(.*$/,"").replace(/\s+/g," ").trim().slice(0,24);
+}
+
 function parseWin(rows){
   const items=[]; let marca="", tipo="Notebook", cur=null;
   const push=()=>{ if(cur) items.push(cur); cur=null; };
@@ -303,13 +337,14 @@ function parseWin(rows){
   push();
   return {items: items.map(p=>{
     const s=p.specs.join(" ");
+    const cpu=procesador(s);
     const ram=(s.match(/Memory[:;]?\s*(\d+)\s*GB/i)||[])[1];
     // el proveedor escribe "Storage:" y a veces "Storage;" — y algún equipo no lo trae
     const st =(s.match(/Storage[:;]?\s*(\d+)\s*(TB|GB)/i)
             || s.match(/(\d+)\s*(TB|GB)\s*(?:M\.2|SSD|PCIe|Solid State)/i) || []);
     const scr=(p.name.match(/(\d{2}(?:\.\d)?)\s*"/)||s.match(/Display:\s*(\d{2}(?:\.\d)?)\s*"/)||[])[1];
     const gpu=(s.match(/(RTX\s*\d{4}\s*(?:Ti)?|GTX\s*\d{4}|Radeon\s*RX\s*\d+)/i)||[])[1];
-    return {...p,
+    return {...p, cpu,
       ram: ram?ram+" GB":"",
       ssd: st[1]?st[1]+" "+st[2].toUpperCase():"",
       pantalla: scr?scr+'"':"",
@@ -441,6 +476,7 @@ function renderWin(vis){
       <article class="prod">
         <h2>${esc(p.name)}</h2>
         <div class="pills">
+          ${p.cpu?`<i class="cpu">${esc(p.cpu)}</i>`:""}
           ${p.ram?`<i>${esc(p.ram)} RAM</i>`:""}
           ${p.ssd?`<i>${esc(p.ssd)} SSD</i>`:""}
           ${p.pantalla?`<i>${esc(p.pantalla)}</i>`:""}
