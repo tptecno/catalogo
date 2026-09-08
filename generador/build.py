@@ -17,7 +17,13 @@ Uso:
     python3 build.py --out ../sitio  # las escribe en otra carpeta
     python3 build.py --dry-run       # solo muestra qué leyó, no escribe nada
 """
-import sys, re, time, json, shutil, pathlib, urllib.request, warnings, csv, io
+import sys, re, time, json, shutil, socket, pathlib, urllib.request, warnings, csv, io
+
+# Sin esto, una lectura de red que se queda a medias cuelga el proceso para siempre:
+# el 31/08/2026 el generador quedó 7 días trabado adentro de una lectura SSL a Google,
+# y como launchd no arranca una copia nueva mientras la vieja vive, el catálogo se
+# congeló 8 días sin avisar. Con timeout, falla y se reintenta en el minuto siguiente.
+socket.setdefaulttimeout(45)
 warnings.filterwarnings("ignore")
 # sheets.py y la credencial viven al lado del script o en la carpeta de arriba
 # (local: ~/Desktop/claude · en CI: la raíz del repo)
