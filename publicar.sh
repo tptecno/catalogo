@@ -11,6 +11,10 @@ export PATH="$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 ahora() { date '+%d/%m %H:%M:%S'; }
 
+# La rutina de GitHub publica en el mismo repo: hay que traer lo suyo antes de
+# generar, o el push de acá choca y el agente queda trabado.
+git pull --rebase --autostash -q origin main 2>/dev/null || git reset --hard -q origin/main
+
 ../.venv/bin/python generador/build.py --out . >/tmp/catalogo_build.log 2>&1 || {
   echo "$(ahora)  ✗ falló la generación:"; tail -5 /tmp/catalogo_build.log; exit 1;
 }

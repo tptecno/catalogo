@@ -1,31 +1,36 @@
-# Regenera el catálogo desde la planilla de costos y lo publica en GitHub Pages.
+# Regenera el catálogo desde la planilla de costos y lo publica.
 #
-# Requiere un secret llamado GCLOUD_SA_JSON con el contenido de gcloud_sa.json
-# (Settings → Secrets and variables → Actions → New repository secret).
-# La credencial nunca queda en el repo: se escribe en disco durante la corrida
-# y se va con la máquina virtual al terminar.
+# Corre en los servidores de GitHub, así que no depende de que la Mac esté prendida.
+# Es el respaldo del agente local (`vigilar.sh`), que publica al instante cuando la
+# Mac está encendida. Los dos hacen exactamente lo mismo: regenerar y subir a `main`.
+# Pages ya sirve `main`, así que no hay que tocar nada de la configuración.
+#
+# NECESITA un secret llamado GCLOUD_SA_JSON con el contenido de gcloud_sa.json:
+#   Settings → Secrets and variables → Actions → New repository secret
+# La credencial nunca queda en el repo: se escribe en el disco de la máquina virtual
+# durante la corrida y desaparece con ella.
+#
+# Si falla, GitHub manda un mail al dueño del repo. Ese aviso es el motivo principal
+# de tener esto: el agente de la Mac se colgó 8 días en septiembre sin que nadie se
+# enterara.
 name: Publicar catálogo
 
-# Por ahora solo se dispara a mano (botón "Run workflow" en la pestaña Actions).
-# Cuando exista el secret GCLOUD_SA_JSON y Pages esté en modo "GitHub Actions",
-# descomentar el schedule para que se regenere solo.
 on:
-  workflow_dispatch:
-  # schedule:
-  #   - cron: "5 12-23 * * 1-6"   # cada hora, 9 a 20 hora AR, lunes a sábado
+  schedule:
+    - cron: "*/15 * * * *"    # cada 15 minutos (GitHub puede atrasarlo unos minutos)
+  workflow_dispatch:           # botón "Run workflow" para forzarlo a mano
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
+concurrency:                   # nunca dos corridas pisándose
+  group: publicar-catalogo
+  cancel-in-progress: false
 
 jobs:
   publicar:
     runs-on: ubuntu-latest
+    timeout-minutes: 10        # si algo se cuelga, corta y avisa
     steps:
       - uses: actions/checkout@v4
 
@@ -38,26 +43,27 @@ jobs:
       - name: Credencial de Google
         env:
           SA: ${{ secrets.GCLOUD_SA_JSON }}
-        run: printf '%s' "$SA" > gcloud_sa.json
+        run: |
+          if [ -z "$SA" ]; then
+            echo "Falta el secret GCLOUD_SA_JSON. Ver el encabezado de este archivo."
+            exit 1
+          fi
+          printf '%s' "$SA" > gcloud_sa.json
 
       - name: Generar las páginas
-        run: python generador/build.py --out _site
+        run: python generador/build.py --out .
 
-      - name: Dejar solo lo que se publica
+      - name: Publicar si algo cambió
         run: |
-          rm -f gcloud_sa.json _site/demo_socio.html
-          touch _site/.nojekyll
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  desplegar:
-    needs: publicar
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - id: deploy
-        uses: actions/deploy-pages@v4
+          rm -f gcloud_sa.json demo_socio.html
+          PAGINAS="index.html iphone.html macbook.html windows.html"
+          if git diff --quiet -- $PAGINAS; then
+            echo "Sin cambios: el catálogo publicado ya está al día."
+            exit 0
+          fi
+          git config user.name  "tptecno (automático)"
+          git config user.email "ventas@tptecno.com"
+          git add $PAGINAS
+          git commit -m "Actualización de precios $(TZ=America/Argentina/Buenos_Aires date '+%d/%m/%Y %H:%M')"
+          git pull --rebase --autostash origin main
+          git push origin main
