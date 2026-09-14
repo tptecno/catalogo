@@ -58,7 +58,7 @@ CATS = [
 ]
 
 # Categorías donde el bloque ES la marca, así que se puede filtrar por él
-FILTRO_POR_BLOQUE = {"camaras": "Marca"}
+FILTRO_POR_BLOQUE = {"camaras": "Marca", "bose": "Tipo"}
 
 # Encabezados que nunca son el título de un bloque ni una descripción
 EXC = {"codigo", "código", "mayorista", "unit cost", "profit", "tato", "melman",
@@ -97,6 +97,10 @@ def parse_costos(rows):
             grupo = c[di] if c[di] and c[di].lower() not in EXC else \
                     next((x for x in c if x and x.lower() not in EXC), "")
             grupo = " ".join(grupo.split())
+            # Los bloques escritos en mayúsculas ("PORTATILES") quedan a los gritos
+            # como título y como chip del filtro: se muestran capitalizados.
+            if grupo.isupper() and len(grupo) > 3:
+                grupo = grupo.title()
             continue
         if not grupo or pi < 0:
             continue
