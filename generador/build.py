@@ -52,6 +52,8 @@ CATS = [
     # Cámaras no está en el catálogo publicado: no hay colores que cruzar
     ("camaras",   "Cámaras",          "Camaras",                   "gen", None),
     ("sonos",     "SONOS",            "Sonos",                     "gen", "1874994252"),
+    # BOSE tampoco está en el catálogo publicado: no hay colores que cruzar
+    ("bose",      "BOSE",             "BOSE",                      "gen", None),
     ("otros",     "Otros",            "Otros",                     "gen", "1976460266"),
 ]
 
