@@ -1,0 +1,54 @@
+# Baja la lista de Melman y la deja en la pestaña Windows de la planilla de COSTOS.
+#
+# Reemplaza a la rutina de Claude que se intentó crear el 16/09/2026: la plataforma
+# de rutinas enmascara las claves privadas del prompt (llegaba llena de bullets), así
+# que la credencial no podía viajar por ahí. Acá usa el mismo secret GCLOUD_SA_JSON
+# que ya usa el catálogo, encriptado y sin pasar por ningún texto.
+#
+# No toca el catálogo viejo ni su Apps Script: esa cadena sigue corriendo aparte.
+name: Windows a costos
+
+on:
+  schedule:
+    - cron: "0 16 * * *"     # 13:00 en Argentina
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-costos
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet gspread google-api-python-client requests
+
+      - name: Credencial de Google
+        env:
+          SA: ${{ secrets.GCLOUD_SA_JSON }}
+        run: |
+          if [ -z "$SA" ]; then
+            echo "Falta el secret GCLOUD_SA_JSON."
+            exit 1
+          fi
+          printf '%s' "$SA" > /tmp/sa.json
+          python -c "import json;d=json.load(open('/tmp/sa.json'));print('credencial OK:',d['client_email'])"
+
+      - name: Melman -> costos!Windows
+        env:
+          GOOGLE_SA_JSON: /tmp/sa.json
+        run: python rutinas/sync_windows_costos.py
+
+      - name: Limpiar
+        if: always()
+        run: rm -f /tmp/sa.json
