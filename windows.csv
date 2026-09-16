@@ -15,7 +15,7 @@ ACER,,
 "Processor: 2 gigahertz AMD Ryzen AI 465 Series (10-core), Memory: 32GB LPDDR5X RAM, Storage: 1TB SSD, Video Card: AMD Radeon 880M, Display: 16"" LCD 1920 x 1200 (WUXGA) Touchscreen Anti-glare 120Hz Brightness: 350 nits, Wi-Fi 7, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,60 Kg. - 5 megapixels 1800p (2.8K) Built-In Microphone",,
-"ACER ASPIRE (A16-52MT-91B0) 16"" FULL HD TOUCHSCREEN LAPTOP STEEL GRAY (Pad Numérico)",USD 1.500,STK
+"ACER ASPIRE (A16-52MT-91B0) 16"" FULL HD TOUCHSCREEN LAPTOP STEEL GRAY (Pad Numérico)",USD 1.450,STK
 "Processor: Intel® Core™ Ultra 9 288V (Up to 48 NPU TOPs), Memory: 32GB LPDDR5X RAM. Storage: 1TB PCIe Gen 4 Solid State Drive and microSD™ Card Reader , Video Card: Intel® ARC™ 140V Graphics, Display: 16"" Multi-Touch IPS Touchscreen, WUXGA (1920 x 1200) 12Hz Refresh Rate, 100% sRGB, and 350 Nits Brightness, Intel® Wi-Fi 7 that supports dual-stream Wi-Fi in the 2.4GHz, 5GHz and 6GHz bands, including 2x2 MIMO Technology, Bluetooth 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,45Kg. - FHD IR Webcam (1920 x 1080) with Blue Glass Windows Hello, Temporal Noise Reduction & Privacy Shutter",,
@@ -269,7 +269,7 @@ LENOVO,,
 "Processor:2.3 gigahertz  Intel Core Ultra 7 Series 355 (8-core), Memory: 32GB LPDDR5X 6800 megahertz RAM, Storage: 1TB SSD PCIe, Video Card: Integrated Intel Graphics, Display: 14"" 3K OLED (2880 x 1800) Touch Screen Refresh Rate 120Hz, Brightness: 1100 nits Wi-Fi 7 Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,25Kg. - 1080P FHD IR Hybrid with Dual Microphone and E-Shutter",,
-"LENOVO IDEAPAD SLIM 3 15ARP10 (83K700TUUS) 15,3"" FULLHD+ TOUCHSCREEN LAPTOP LUNAR GRAY [Pad Numérico]",USD 1.020,STK
+"LENOVO IDEAPAD SLIM 3 15ARP10 (83K700TUUS) 15,3"" FULLHD+ TOUCHSCREEN LAPTOP LUNAR GRAY [Pad Numérico]",USD 1.050,STK
 "Processor: AMD Ryzen™ 7 170 (8C / 16T, 3.2 / 4.75GHz, 4MB L2 / 16MB L3), Memory: 16GB SODIMM DDR5-4800 RAM, Storage: 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe®, Video Card: Integrated AMD Radeon™ 680M Graphics, Display: 
  15.3"" WUXGA (1920x1200) IPS 300nits Anti-glare, 45% NTSC, 60Hz, Touch, Wi-Fi® 6, 802.11ax 2x2 + BT5.3",,
 "Windows 11 Home x 64 bits, preinstalado.
@@ -359,7 +359,7 @@ MSI,,
  Peso: 1,45Kg. - FHD (1080p) IR Webcam with Privacy Shutter",,
 SAMSUNG,,
 "SAMSUNG GALAXY BOOK 5 PRO (NP940XHA-KG1US) 14"" 3K AMOLED TOUCHSCREEN LAPTOP GRAY",USD 1.550,STK
-"Processor: 3.6 gigahertz Intel Core Ultra 7 Series 1 Evo Edition 155H, Memory: 16GB LPDDR5X 7467 Mhz RAM, Storage: 512GB PCIe® NVMe™ M.2 Solid State Drive, Video Card: Integrated Intel Arc, Display: 14"" 2880 x 1800 AMOLED Touchscreen Refresh Rate 120Hz, AX Wi-Fi 6E Bluetooth",,
+"Processor: 3.6 gigahertz Intel Core Ultra 7 256V, Memory: 16GB LPDDR5X 7467 Mhz RAM, Storage: 512GB PCIe® NVMe™ M.2 Solid State Drive, Video Card: Integrated Intel Arc, Display: 14"" 2880 x 1800 AMOLED Touchscreen Refresh Rate 120Hz, AX Wi-Fi 6E Bluetooth",,
 "Microsoft® Windows 11 Home (64-bit) , preinstalado
  Peso 1.23Kg, Integrated 720p Webcam",,
 "SAMSUNG GALAXY BOOK 4 EDGE (NP750XQB-KA2US) 15.6"" FHD LED LATOP SHAPPIRE BLUE [Pad Numérico]",USD 920,STK
@@ -436,17 +436,6 @@ DELL GAMER,,
 Video Card: NVIDIA GeForce RTX 5060 8GB,,
 "Windows 11 Home x64 bits, preinstalado
  Peso 2,69 Kg, FHD IR Camera Display with dual-array microphones,",,
-"DELL ALIENWARE 16X AURORA (LAC16250-7568BLU) 16"" 2,5K GAMING LAPTOP 120Hz INTERSTELLAR INDIGO",USD 2.200,CONS
-"Processor: 2.5 gigahertz Intel Core 7 Series 2 240H (10-core), Memory: 32GB 5600 MT/s RAM, Storage: 1TB PCIe® NVMe™ M.2 Solid State Drive, Display: 16"" (2560 x 1600) Refresh Rate 120Hz, Brightness: 300 nits Ethernet Card
- 10/100/1000, Wi-Fi 7, Bluetooth",,
-Video Card: NVIDIA GeForce RTX 5060 8GB GDDR7,,
-"Windows 11 Home x64 bits, preinstalado
- Peso 2,69 Kg, FHD IR Camera Display with dual-array microphones,",,
-"DELL ALIENWARE 16X AURORA (LAC16251-9582BLU) 16"" QHD+ GAMING LAPTOP 240hz BLUE",USD 2.700,CONS
-"Processor: Intel® Core Ultra 9 275HX (24-Core, 36MB Total Cache, 2.7GHz to 5.4GHz), Memory: 32GB 6400 MT/s RAM, Storage: 2TB PCIe® NVMe™ M.2 Solid State Drive, Display: 16"" (2560 x 1600) Refresh Rate 240Hz, Ethernet Card 10/100/1000, Wi-Fi, Bluetooth",,
-Video Card: NVIDIA® GeForce RTX™ 5070 8GB GDDR7,,
-"Windows 11 Home x64 bits, preinstalado
- Peso 2,69 Kg, FHD IR Camera Display with dual-array microphones,",,
 "DELL ALIENWARE 18 AREA-51 (LAA18250-9444B) 18"" QHD+ GAMING LAPTOP LIQUID TEAL",USD 3.900,STK
 "Processor: Intel® Core Ultra 9 275HX (24-Core, 36MB Total Cache, 2.7GHz to 5.4GHz), Memory: 32GB 6400 MT/s RAM, Storage: 2TB PCIe® NVMe™ M.2 Solid State Drive, Display: 18"" QHD+ ComfortView+ Anti-Glare Display, Ethernet Card: Killer E5000 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4",,
 Video Card: NVIDIA® GeForce RTX™ 5070 Ti 12GB GDDR7,,
@@ -485,21 +474,16 @@ Video Card: NVIDIA® GeForce RTX™ 5070 8GB GDDR7,,
 Video Card: NVIDIA® GeForce RTX™ 5070 8GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 1,80Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
-"LENOVO LEGION PRO 7 (83RU0005US) 16"" 2.5K OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 4.800,CONS
+"LENOVO LEGION PRO 7 (83RU0005US) 16"" 2.5K OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 4.900,ING
 "Processor: AMD Ryzen 9000 Series 9955HX3D 2.5GHz Up to 5.4GHz (16 Core), Memory: 64GB DDR5-5600 RAM, Storage; 2TB M.2 Solid State Drive, Display: 16"" WQXGA OLED (2560x1600) Glossy 240Hz Brightness 500 nits, 2.5Gb LAN Wireless LAN Wifi 7 (802.11be) Bluetooth 5.4, Per-key RGB Backlit",,
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 2,62Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
-"LENOVO LEGIO PRO 5i (83F3000HUS) 16"" 2.5K OLED GAMING LAPTOP 165Hz ECLIPSE BLACK (Pad Numerico)",USD 2.700,STK
+"LENOVO LEGIO PRO 5i (83F3000HUS) 16"" 2.5K OLED GAMING LAPTOP 165Hz ECLIPSE BLACK (Pad Numerico)",USD 2.700,CONS
 "Processor: Intel® Core™ Ultra 9 Processor 275HX, 24C (8P + 16E), Memory: 32GB DDR5-5600 RAM, Storage: 1TB Solid State Drive M.2 2242, Display: 16"" WQXGA (2560x1600) OLED 500nits (Typical) 165Hz, Wi-Fi® 7, 802.11be 2x2 + BT5.4",,
 NVIDIA® GeForce RTX™ 5070 8GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 2,05Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
-"LENOVO LEGION PRO 7i (83F5006FUS) 16"" 2K OLED GAMING LAPTOP 240Hz ECLIPSE BLACK (Pad Numerico)",USD 3.600,CONS
-"Processor: 2.1GHz Intel Core Ultra 9 275HX, 24C (8P + 16E) / 24T, Max Turbo up, Memory: 32GB CSODIMM DDR5-6400hz RAM, Storage: 1TB+1TB SSD M.2 2280 PCIe® 4.0 Performance NVMe®, Display: 16"" WQXGA (2560x1600) OLED 500nits Glossy, 100% DCI-P3, 240Hz, DisplayHDR™ True Back 1000, Dolby Vision®, G-SYNC®, Low Blue Light, High Gaming Performance, Flicker Free, 2.5GbE (RJ-45) Wi-Fi® 7, 802.11be 2x2 + BT5.4",,
-Video Card: NVIDIA® GeForce RTX™ 5070 Ti 12GB GDDR7,,
-"Windows 11 PRO x64, preinstalado. 
- Peso 2,62Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
 "LENOVO LEGION PRO 7 (83RU004AUS) 16"" 3K OLED LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 4.600,STK
 "Processor: 2.5 gigahertz AMD Ryzen 9 9955HX3D Series (16-core) , Memory: 32GB 5600 megahertz RAM, Storage: 1TB SSD M.2 2280 PCIe® 4.0 Performance NVMe®, Display: 16"" WQXGA (2560x1600) OLED 500nits Glossy, 100% DCI-P3, 240Hz, DisplayHDR™ True Back 1000, Dolby Vision®, G-SYNC®, Low Blue Light, High Gaming Performance, Flicker Free, 2.5GbE (RJ-45) Wi-Fi® 7, 802.11be 2x2 + BT5.4",,
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7 DLSS 4 (Deep Learning Super Sampling),,
@@ -510,7 +494,7 @@ Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7 DLSS 4 (Deep Learning Super Sampl
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 2,56Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
-"LENOVO LEGION PRO 7  (83F500M5US) 16"" OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 6.500,CONS
+"LENOVO LEGION PRO 7  (83F500M5US) 16"" OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 6.800,ING
 "Processor: Intel Core™ Ultra 9 290HX Plus, 24C (8P + 16E) / 24T, Max Turbo up to 5.5GHz, Memory: 64GB CSODIMM DDR5-6400, Storage: 2TB SSD M.2 2280 PCIe® 5.0x4 Performance NVMe®, Display: 16"" WQXGA (2560x1600) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 240Hz, DisplayHDR™ True Black 1000, Dolby Vision®, G-SYNC®, Low Blue Light, High Gaming Performance, Flicker Free",,
 Video Card: NVIDIA GeForce RTX™ 5090 24GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
