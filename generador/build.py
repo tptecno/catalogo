@@ -38,11 +38,16 @@ PUB = ("https://docs.google.com/spreadsheets/d/e/2PACX-1vQSAbORWkzoQ-0MXJ1ykvdpv
        "AbCop-S-9M7Jh9bnjaZGkLOH0lDGYMSEm3VaMzNWJ0Qk65gAEU7t1n/pub")
 WIN_GID = "661876936"
 
+# De dónde salen las filas de Windows. Melman todavía escribe en el catálogo viejo;
+# cuando la rutina nueva escriba en costos!Windows, se cambia esto a "costos" y no
+# hay que tocar nada más.
+WINDOWS_DESDE = "publicado"      # "publicado" | "costos"
+
 # key          etiqueta            pestaña de costos            parser  gid del catálogo (colores)
 CATS = [
     ("iphone",    "iPhone",           "Celulares",                 "gen", "417290024"),
     ("macbook",   "MacBook",          "MacBook",                   "mac", "97413136"),
-    ("windows",   "Windows",          None,                        "win", None),
+    ("windows",   "Windows",          "Windows",                   "win", None),
     ("ipad",      "iPad",             "iPad",                      "gen", "397123973"),
     ("imac",      "iMac · Mac mini",  "iMac - Mac Mini & Studio",  "gen", "1739381259"),
     ("watch",     "Watch",            "Watch",                     "gen", "966539432"),
@@ -170,6 +175,64 @@ def colores_publicados(gid):
     return out
 
 
+def filas_windows(rows):
+    """Windows conserva el formato de bloques de Melman: 3 o 4 filas por producto.
+    Solo se publican las columnas A (nombre/specs), B (precio) y C (stock).
+    La F, que trae el costo del proveedor, se descarta a propósito: hoy viaja al
+    CSV publicado y no tiene por qué verla un cliente."""
+    return [[(r[0] if len(r) > 0 else ""),
+             (r[1] if len(r) > 1 else ""),
+             (r[2] if len(r) > 2 else "")] for r in rows]
+
+
+def productos_windows(rows):
+    """Aplana los bloques a un producto por fila, para el sync con Shopify.
+    Se conservan las specs juntas en un campo: de ahí salen la descripción y los
+    metafields de la tienda."""
+    items, marca, tipo, cur = [], "", "Notebook", None
+    def cerrar():
+        if cur:
+            cur["specs"] = " ".join(cur.pop("_specs"))
+            items.append(cur)
+    for r in rows:
+        a = (r[0] if len(r) > 0 else "").strip()
+        precio = (r[1] if len(r) > 1 else "").strip()
+        stk = (r[2] if len(r) > 2 else "").strip()
+        if not a:
+            continue
+        if not precio and a == a.upper() and len(a) < 28 and not re.search(r"[:.]", a):
+            cerrar(); cur = None
+            tipo = ("Gamer" if "GAMER" in a else "All in One" if "ALL IN ONE" in a
+                    else "Monitor" if "MONITOR" in a else "Notebook")
+            marca = re.sub(r"\s*(GAMER|ALL IN ONE|MONITOR.*)$", "", a).strip()
+            continue
+        if precio:
+            cerrar()
+            cur = {"bloque": f"{marca} {tipo}".strip(), "codigo": "",
+                   "desc": " ".join(a.split()), "precio": precio, "stock": stk,
+                   "_specs": []}
+            m = re.search(r"\(([^)]+)\)", a)
+            if m:
+                cur["codigo"] = m.group(1).strip()
+            continue
+        if cur:
+            cur["_specs"].append(" ".join(a.split()))
+    cerrar()
+    return items
+
+
+def escribir_sync(salida, filas):
+    """CSV plano para la rutina de Shopify. Va al repo público, así que lleva
+    SOLO lo que puede ver cualquiera: nada de Unit Cost, Profit ni precios por
+    proveedor. La rutina lo lee por HTTP y no necesita credenciales."""
+    ruta = salida / "sync.csv"
+    with open(ruta, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["categoria", "bloque", "codigo", "descripcion", "precio", "stock", "specs"])
+        w.writerows(filas)
+    print(f"  sync.csv       {len(filas)} productos")
+
+
 def main():
     dry = "--dry-run" in sys.argv
     cuenta = {}
@@ -180,15 +243,32 @@ def main():
         salida.mkdir(parents=True, exist_ok=True)
     datos, resumen = {}, []
 
+    win_filas, sync = [], []
+
     for key, label, pestana, parser, gid in CATS:
         if parser == "win":
-            # Windows se lee en vivo en el navegador; acá solo se cuenta para la portada
-            texto = bajar(f"{PUB}?gid={WIN_GID}&single=true&output=csv")
-            filas = list(csv.reader(io.StringIO(texto))) if texto else []
-            cuenta[key] = sum(1 for r in filas if len(r) > 1 and r[1].strip())
-            resumen.append(f"{label:18} {cuenta[key]:3} productos · en vivo desde el catálogo")
+            # Windows se publica aparte, en su propio CSV, porque conserva el
+            # formato de bloques de Melman y el navegador lo lee con parseWin.
+            if WINDOWS_DESDE == "costos":
+                crudas = leer_pestana(pestana)
+            else:
+                texto = bajar(f"{PUB}?gid={WIN_GID}&single=true&output=csv")
+                if not texto:
+                    raise SystemExit("No se pudo leer Windows del catálogo publicado.")
+                crudas = list(csv.reader(io.StringIO(texto)))
+            win_filas = filas_windows(crudas)
+            prods = productos_windows(crudas)
+            cuenta[key] = len(prods)
+            for p in prods:
+                sync.append([key, p["bloque"], p["codigo"], p["desc"],
+                             p["precio"], p["stock"], p["specs"]])
+            resumen.append(f"{label:18} {len(prods):3} productos · "
+                           f"{len(set(p['bloque'] for p in prods))} bloques · desde {WINDOWS_DESDE}")
             continue
         items = parse_costos(leer_pestana(pestana))
+        for i in items:
+            sync.append([key, i["model"], i.get("codigo", ""), i["desc"],
+                         i.get("price", ""), "" if i["avail"] else i.get("estado", "Sin stock"), ""])
         col = colores_publicados(gid) if gid else {}
         pegados = 0
         for i in items:
@@ -206,6 +286,11 @@ def main():
     if dry:
         print("\n--dry-run: no se escribió nada.")
         return
+
+    with open(salida / "windows.csv", "w", newline="", encoding="utf-8") as f:
+        csv.writer(f).writerows(win_filas)
+    print(f"  windows.csv    {len(win_filas)} filas (sin la columna de costo)")
+    escribir_sync(salida, sync)
 
     tpl = (here / "_template.html").read_text()
 
@@ -226,7 +311,7 @@ def main():
         {"key": k, "label": lb, "parser": p, "n": cuenta.get(k, 0),
          "grupo": FILTRO_POR_BLOQUE.get(k),
          **({"mode": "json"} if p != "win" else
-            {"mode": "csv", "url": f"{PUB}?gid={WIN_GID}&single=true&output=csv"})}
+            {"mode": "csv", "url": "windows.csv"})}
         for k, lb, _, p, _ in CATS], ensure_ascii=False, indent=2)
     bloques = "\n".join(
         f'<script type="application/json" id="datos-{k}">{json.dumps(v, ensure_ascii=False)}</script>'

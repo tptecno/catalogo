@@ -26,6 +26,14 @@ for viejo in $(pgrep -f "generador/build.py" || true); do
   fi
 done
 
+# ESPEJO APAGADO (16/09/2026, a pedido de Tomás: era una prueba).
+# Copiaba Catálogo!Windows -> costos!Windows cada minuto. Se apaga porque la rutina
+# de Melman va a escribir directo en costos!Windows. Mientras tanto build.py lee
+# Windows del catálogo publicado (ver WINDOWS_DESDE en generador/build.py).
+# Para reactivarlo, descomentar estas dos líneas:
+# PYTHONWARNINGS=ignore ../.venv/bin/python espejo_windows.py 2>/dev/null |
+#   while read -r linea; do [ -n "$linea" ] && echo "$(ahora)  $linea"; done || true
+
 # Marca de tiempo de la última edición de la planilla de costos
 marca=$(../.venv/bin/python - 2>/dev/null <<'PY'
 import warnings, os; warnings.filterwarnings("ignore")
@@ -64,6 +72,27 @@ if [ "$marca" != "$previa" ]; then
   echo "$(ahora)  → cambio detectado en la planilla"
 fi
 
-./publicar.sh
-echo "$marca" > "$ESTADO"
-date +%s > "$SELLO"
+# Techo duro a la publicación. Si publicar.sh se cuelga, vigilar.sh nunca termina,
+# launchd no lanza la corrida siguiente y el catálogo se congela sin avisar. Pasó el
+# 11/09/2026: build.py quedó 2 días y 18 horas clavado en una lectura SSL a Google.
+# El socket.setdefaulttimeout(45) de build.py NO alcanza: la librería de Google crea
+# sus propios sockets y se saltea ese default. Por eso el corte va acá afuera.
+LIMITE=600                  # 10 minutos
+
+./publicar.sh &
+publicacion=$!
+( sleep "$LIMITE"; kill -9 "$publicacion" 2>/dev/null
+  pkill -9 -f "generador/build.py" 2>/dev/null ) &
+reloj=$!
+
+if wait "$publicacion"; then
+  kill "$reloj" 2>/dev/null
+  wait "$reloj" 2>/dev/null
+  echo "$marca" > "$ESTADO"
+  date +%s > "$SELLO"
+else
+  kill "$reloj" 2>/dev/null
+  wait "$reloj" 2>/dev/null
+  # No se actualiza el estado a propósito: así se reintenta en la corrida siguiente.
+  echo "$(ahora)  ✗ la publicación no terminó en $((LIMITE/60)) min y se cortó"
+fi
