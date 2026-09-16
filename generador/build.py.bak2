@@ -249,8 +249,7 @@ def escribir_sync(salida, filas):
     ruta = salida / "sync.csv"
     with open(ruta, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["categoria", "bloque", "codigo", "descripcion", "precio",
-                    "hay_stock", "stock_texto", "specs"])
+        w.writerow(["categoria", "bloque", "codigo", "descripcion", "precio", "stock", "specs"])
         w.writerows(filas)
     print(f"  sync.csv       {len(filas)} productos")
 
@@ -282,18 +281,15 @@ def main():
             prods = productos_windows(crudas)
             cuenta[key] = len(prods)
             for p in prods:
-                # Melman marca el stock con STK/ING/CONS; solo STK significa que hay.
-                hay = "SI" if p["stock"].strip().upper() == "STK" else "NO"
                 sync.append([key, p["bloque"], p["codigo"], p["desc"],
-                             p["precio"], hay, p["stock"], p["specs"]])
+                             p["precio"], p["stock"], p["specs"]])
             resumen.append(f"{label:18} {len(prods):3} productos · "
                            f"{len(set(p['bloque'] for p in prods))} bloques · desde {WINDOWS_DESDE}")
             continue
         items = parse_costos(leer_pestana(pestana))
         for i in items:
             sync.append([key, i["model"], i.get("codigo", ""), i["desc"],
-                         i.get("price", ""), "SI" if i["avail"] else "NO",
-                         "" if i["avail"] else i.get("estado", "Sin stock"), ""])
+                         i.get("price", ""), "" if i["avail"] else i.get("estado", "Sin stock"), ""])
         # Los colores salen de la columna Colores de costos. Donde todavía no están
         # cargados se cruza por código contra el catálogo viejo, para no perderlos
         # mientras dure la migración. Cuando `heredados` llegue a 0 en todas las
