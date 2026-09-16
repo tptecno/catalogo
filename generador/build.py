@@ -41,7 +41,7 @@ WIN_GID = "661876936"
 # De dónde salen las filas de Windows. Melman todavía escribe en el catálogo viejo;
 # cuando la rutina nueva escriba en costos!Windows, se cambia esto a "costos" y no
 # hay que tocar nada más.
-WINDOWS_DESDE = "publicado"      # "publicado" | "costos"
+WINDOWS_DESDE = "costos"      # "publicado" | "costos"
 
 # key          etiqueta            pestaña de costos            parser  gid del catálogo (colores)
 CATS = [
