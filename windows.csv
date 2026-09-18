@@ -28,7 +28,7 @@ ASUS,,
 "Processor: 2.1 GHz Intel® Core™ Ultra X9 388H 2.1 GHz (18MB Cache, up to 5.1 GHz, 16 cores, 16 Threads), Memory: 32GB LPDDR5X RAM, Storage: 1TB PCIe® G4 Solid State Drive, Video Card: Intel® Arc™ Graphics, Display: 14'' Dual OLED WQXGA+ (2880x1800) Touch 144Hz refresh rate; 16:10 aspect ratio; Bend+500nits (HDR 1000nits), Wi-Fi 7(802.11be) (Tri-band) 2*2 + Bluetooth® 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,28Kg. - 1080p. Camera with IR Function to Support Windows Hello",,
-"ASUS ZENBOOK 14 (UM3405GA-ZB70) 14"" 2K OLED TOUCHSCREEN LAPTOP JASPER GRAY",USD 1.550,ING
+"ASUS ZENBOOK 14 (UM3405GA-ZB70) 14"" 2K OLED TOUCHSCREEN LAPTOP JASPER GRAY",USD 1.500,STK
 "Processor: 2 gigahertz AMD Ryzen AI Ryzen AI 9 465 (10-core), Memory: 16GB LPDDR5X 7500 megahertz RAM, Storage: 512GB PCIe® Gen 4 Solid State Drive, Video Card: AMD Radeon Integrated, Display: 14"" OLED (1920x1200) WUXGA Touscreen 60Hz 500 nits, AX Wi-Fi 6E, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,28Kg. - 1080p. Camera with IR Function to Support Windows Hello",,
@@ -40,7 +40,7 @@ ASUS,,
 "Processor: Intel® Core™ Ultra 7 Processor 256V 16GB 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 8 Threads), Memory: 16GB LPDDR5X RAM, Storage: 1TB PCIE G4 Solid State Drive, Video Card: Intel® Arc™ Graphics, Display: 14"" OLED WUXGA (1920Xx1200) Touch, 16:10, 60Hz refresh rate, Bend +300 nits, Wi-Fi 7(802.11be) (Tri-band)2*2 + Bluetooth® 5.4 Wireless Card",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,57Kg. - FHD camera with IR function to support Windows Hello w/ privacy shutter",,
-"ASUS ZENBOOK S 14 (UX5406SA-S14.U732G1T) 14"" 3K OLED TOUCHSCREEN LAPTOP ZUMAIA GRAY",USD 1.950,STK
+"ASUS ZENBOOK S 14 (UX5406SA-S14.U732G1T) 14"" 3K OLED TOUCHSCREEN LAPTOP ZUMAIA GRAY",USD 1.950,CONS
 "Processor: 1.6 gigahertz Intel Core Ultra 7 Series 258V (8-core), Memory: 32GB LPDDR5X 8533 megahertz RAM, Storage: 1TB M.2 NVMe™ PCIe® 4.0 SSD, Video Card: Intel® Arc™ Graphics, Display: 14"" 3K (2880 x 1800) Oled Touchscreen Refresh Rate: 120Hz, Wi-Fi 7, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,28Kg. - 1080p. Camera with IR Function to Support Windows Hello",,
@@ -60,7 +60,7 @@ ASUS,,
 "Processor: AMD Ryzen™ AI 9 465 Processor 2.0GHz (10-core), Memory: 32GB DDR5 SO-DIMM, Storage: 1TB PCIe® G4 Solid State Drive, Video Card: AMD Radeon™ Graphics, Display: 16'' WUXGA (1920x1200) 16:10, 400nits, 120Hz refresh rate, Touch panel, Wi-Fi 6(802.11ax) (Dual band) 2*2 + Bluetooth® 5.4 Wireless Card",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,90Kg. - Full HD camera with IR function to support Windows Hello",,
-"ASUS ZENBOOK S16 (UM5606GA-ZB/S1690) 16"" 3K OLED TOUCHSCREN LAPTOP ANTRIM GRAY",USD 2.200,ING
+"ASUS ZENBOOK S16 (UM5606GA-ZB/S1690) 16"" 3K OLED TOUCHSCREN LAPTOP ANTRIM GRAY",USD 2.200,STK
 "Processor: 2 gigahertz AMD Ryzen AI 400 Series Ryzen AI 9 465 (10-core), Memory: 32GB LPDDR5X 8533 megahertz RAM, Storage: 1TB PCIe 4.0 SSD, Video Card: AMD Radeon Integrated, Display: 16"" 3K OLED (2880 x 1800) Touchscreen Refresh Rate 120Hz, Brightness: 500 nits, Wi-Fi 7, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,60Kg. - Full HD camera with IR function to support Windows Hello",,
@@ -406,6 +406,11 @@ SAMSUNG GALAXY BOOK 5 PRO 360 (NP960QHA-KG3US) Copilot+ PC 16” 3K AMOLED TOUCH
 "Microsoft® Windows 11 Home (64-bit) , preinstalado
  Peso 2.73Kg, 2M Camera, Internal Dual Array Digital Mic",,
 ASUS GAMER,,
+"ASUS ROG Strix G16 (G614PM-IB96) 16"" 2K GAMING NOTEBOOK 165Hz ECLIPSE GRAY",USD 2.900,STK
+"Processor: AMD Ryzen™ 9 8940HX Processor 2.4GHz (80MB Cache, up to 5.3GHz, 16 cores, 32 Threads), Memory: 32GB DDR5-5200 SO-DIMM, Storage: 1TB PCIe® 4.0 NVMe™ M.2 Solid State Drive, Display: 16"" FHD+ 16:10 (1920 x 1200, WUXGA), 300 nits 165Hz refresh rate, Wi-Fi 6E(802.11ax) (Triple band) 2*2 + Bluetooth® 5.3 Wireless Card",,
+Video Card: NVIDIA® GeForce RTX™ 5060 Laptop GPU 8GB DDR7,,
+"Windows 11 Home x64, preinstalado.
+ Peso 3,00Kg. - 1080P FHD camera Built-in array microphone; 1x 35mm Combo Audio Jack",,
 "ASUS ROG Strix G16 (G615LP-MS96) 16""2.5K GAMING NOTEBOOK 240Hz ECLIPSE GRAY",USD 2.800,CONS
 "Processor: 2.1GHz Intel Core Ultra 9 Series 2 Core Ultra 275HX, Memory: 32GB DDR5 5600MHz RAM, Storage: 1TB PCIe® 4.0 NVMe™ M.2 Solid State Drive, Display: 16"" 2.5K (2560x1600) IPS Anti-Glare Refresh Rate 240Hz Brightness: 500 nits, 2.5Gb 10/100/1000/2500Mbps LAN Wi-Fi 7 802.11be+Bluetooth 5.4 Wireless Card",,
 Video Card: NVIDIA GeForce RTX 5070 8GB GDDR7,,
@@ -437,7 +442,7 @@ Video Card: NVIDIA® GeForce RTX™ 5060 Laptop GPU 8GB DDR7,,
 "Video Card: NVIDIA® GeForce RTX™ 5070 Ti, 12GB GDDR7",,
 "Windows 11 Home x64, preinstalado.
  Peso 3,00Kg. - 1080P FHD IR Camera for Windows Hello, Built-in array microphone",,
-"ASUS ROG STRIX G18 (G815LW-G18.U95080) 18"" 2.5K WQXGA GAMING LAPTOP 240Hz ECLIPSE GRAY (Pad Numerico)",USD 3.900,STK
+"ASUS ROG STRIX G18 (G815LW-G18.U95080) 18"" 2.5K WQXGA GAMING LAPTOP 240Hz ECLIPSE GRAY (Pad Numerico)",USD 3.900,ING
 "Processor: Intel® Core™ Ultra 9 Processor 275HX 2.7 GHz (36MB Cache, up to 5.4 GHz, 24 cores, 24 Threads), Memory: 32GB DDR5 5600MHz RAM, Storage: 2TB PCIe® 4.0 NVMe™ M.2 Solid State Drive, Display: ROG Nebula Display;18""; 2.5K (2560x1600, WQXGA) 16:10 aspect ratio, 500nits 240Hz refresh rate, Wi-Fi 7(802.11be) (Triple band), Bluetooth® 5.4",,
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x64, preinstalado.
@@ -496,7 +501,7 @@ Video Card: NVIDIA® GeForce RTX™ 5070 8GB GDDR7,,
 Video Card: NVIDIA GeForce RTX 5070 Ti 12GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 2,05Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
-"LENOVO LEGION PRO 7 (83RU0005US) 16"" 2.5K OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 4.900,ING
+"LENOVO LEGION PRO 7 (83RU0005US) 16"" 2.5K OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 4.900,STK
 "Processor: AMD Ryzen 9000 Series 9955HX3D 2.5GHz Up to 5.4GHz (16 Core), Memory: 64GB DDR5-5600 RAM, Storage; 2TB M.2 Solid State Drive, Display: 16"" WQXGA OLED (2560x1600) Glossy 240Hz Brightness 500 nits, 2.5Gb LAN Wireless LAN Wifi 7 (802.11be) Bluetooth 5.4, Per-key RGB Backlit",,
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
@@ -516,7 +521,7 @@ Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7 DLSS 4 (Deep Learning Super Sampl
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 2,56Kg. - 5.0MP with E-shutter Privacy Shutter and Microphone",,
-"LENOVO LEGION PRO 7  (83F500M5US) 16"" OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 6.800,ING
+"LENOVO LEGION PRO 7  (83F500M5US) 16"" OLED GAMING LAPTOP 240Hz ECLIPSE BLACK [Pad Numérico]",USD 6.800,STK
 "Processor: Intel Core™ Ultra 9 290HX Plus, 24C (8P + 16E) / 24T, Max Turbo up to 5.5GHz, Memory: 64GB CSODIMM DDR5-6400, Storage: 2TB SSD M.2 2280 PCIe® 5.0x4 Performance NVMe®, Display: 16"" WQXGA (2560x1600) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 240Hz, DisplayHDR™ True Black 1000, Dolby Vision®, G-SYNC®, Low Blue Light, High Gaming Performance, Flicker Free",,
 Video Card: NVIDIA GeForce RTX™ 5090 24GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
@@ -547,31 +552,31 @@ Video Card: NVIDIA GeForce RTX 5060 Graphics Card,,
 Video Card: NVIDIA® GeForce RTX™ 5060 8GB GDDR7,,
 "Windows 11 Home x 64 bits, preinstalado
  Peso 3,10Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
-"MSI RAIDER 16 Max HX (RAIDER16MXHXB4) 16"" OLED GAMING LAPTOP 240Hz CORE BLACK",USD 3.400,STK
-"Processor: 1.8GHz Intel Core Ultra 9 Series 2 290HX Plus Twenty-Four-Core, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED (2560x1600) 240Hz, 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4, Per-key RGB",,
+"MSI RAIDER 16 Max HX (B2WH-004US) 16"" OLED GAMING LAPTOP 240Hz  CORE BLACK",USD 3.400,STK
+"Processor: 1.8GHz Intel Core Ultra 9 Series 2 290HX Plus Twenty-Four-Core, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED (2560x1600) 240Hz, 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4, Per-key RGB", RAIDER16MXHXB4,
 Video Card: NVIDIA GeForce RTX 5070 Ti 12GB GDDR7,,
 "Windows 11 Home x 64 bits, preinstalado
  Peso 2,60Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
-"MSI Crosshair 16 Max (E2WGXK-028US)(CROSSHAIR16MAXH) 16"" OLED GAMING LAPTOP 165Hz CORE BLACK",USD 2.900,STK
-"Processor: 1.8GHz Intel Core Ultra 9 290HX Plus, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED 165Hz, Intel Wi-Fi 6E AX211, Bluetooth 5.3, 10/100/1000 Network",,
+"MSI Crosshair 16 Max (E2WGXK-028US )16"" OLED GAMING LAPTOP 165Hz CORE BLACK",USD 2.900,STK
+"Processor: 1.8GHz Intel Core Ultra 9 290HX Plus, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED 165Hz, Intel Wi-Fi 6E AX211, Bluetooth 5.3, 10/100/1000 Network",CROSSHAIR16MAXH,
 Video Card: NVIDIA GeForce RTX 5070 12GB GDDR7,,
 "Windows 11 Home x 64 bits, preinstalado
  Peso 2,60Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
 "MSI Stealth (B3WH-059US) 16"" QHD+ OLED GAMING LAPTOP 240hz CORE BLACK",USD 4.000,STK
 "Processor: Intel® Core™ Ultra 9 386H (16 Cores, 1.6 - 4.9 GHz), Memory: 32GB DDR5 5600MHz, Storage: 2TB NVMe SSD, Display: 16"" 16:10 QHD+ (2560 x 1600) OLED, 240hz Display, 100% DCI-P3, Wi-Fi 7 and Bluetooth® v6, IR FHD type (30fps@1080p) with HDR, 4-Zone RGB Gaming Keyboard",,
 Video Card: NVIDIA GeForce RTX 5070 12GB GDDR7,,
-"MSI RAIDER 16 Max HX (B2WI-003US) (RAIDER16MXHXB3) 16"" OLED GAMING LAPTOP 240Hz CORE BLACK",USD 3.800,STK
-"Processor: 1.8GHz Intel Core Ultra 9 Series 2 290HX Plus Twenty-Four-Core, Memory: 32GB DDR5-6000 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED (2560x1600) 240Hz, 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4, Per-key RGB",,
+"MSI RAIDER 16 Max HX (B2WI-003US) 16"" OLED GAMING LAPTOP 240Hz  CORE BLACK",USD 3.800,STK
+"Processor: 1.8GHz Intel Core Ultra 9 Series 2 290HX Plus Twenty-Four-Core, Memory: 32GB DDR5-6000 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED (2560x1600) 240Hz, 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4, Per-key RGB",RAIDER16MXHXB3,
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x 64 bits, preinstalado
  Peso 2,60Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
-"MSI Vector 16 HX AI (A2XWIG-420US) (VECTOR16HXA2420) 16"" QHD+ GAMING LAPTOP COSMO GRAY",USD 3.600,STK
-"Processor: Intel Core Ultra 9 275HX (2.1GHz - 5.4GHz) , Memory: 32GB LPDDR5 5600 megahertz RAM, Storage: 1TB PCIe® Gen 4 Solid State Drive, Display: 16"" QHD+ WVA 240Hz Display, 2.5GbE LAN, Killer WiFi 7 BE1750, Bluetooth 5.4",,
+"MSI Vector 16 HX AI (VECTOR16HXA2420) 16"" QHD+ GAMING LAPTOP COSMO GRAY",USD 3.600,STK
+"Processor: Intel Core Ultra 9 275HX (2.1GHz - 5.4GHz) , Memory: 32GB LPDDR5 5600 megahertz RAM, Storage: 1TB PCIe® Gen 4 Solid State Drive, Display: 16"" QHD+ WVA 240Hz Display, 2.5GbE LAN, Killer WiFi 7 BE1750, Bluetooth 5.4",A2XWIG-420US,
 Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 "Windows 11 Home x 64 bits, preinstalado
  Peso 2,60Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
-"MSI RAIDER 16 Max HX B2WJ-002US (RAIDER16MXHXB20) 16"" OLED GAMING LAPTOP 240Hz CORE BLACK",USD 4.500,STK
-"Processor: 1.8GHz Intel Core Ultra 9 Series 2 290HX Plus Twenty-Four-Core, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED (2560x1600) 240Hz, 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4, Per-key RGB",,
+"MSI RAIDER 16 Max HX (B2WJ-002US) 16"" OLED GAMING LAPTOP 240Hz  CORE BLACK",USD 4.500,STK
+"Processor: 1.8GHz Intel Core Ultra 9 Series 2 290HX Plus Twenty-Four-Core, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 x4 NVMe M.2 SSD, Display: 16"" QHD+ OLED (2560x1600) 240Hz, 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4, Per-key RGB",RAIDER16MXHXB20,
 Video Card: NVIDIA GeForce RTX 5090 24GB GDDR7,,
 "Windows 11 PRO x 64 bits, preinstalado
  Peso 2,60Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
