@@ -260,7 +260,10 @@ def main():
     dry = "--dry-run" in sys.argv
     cuenta = {}
     here = pathlib.Path(__file__).resolve().parent
-    salida = here
+    # Sin --out escribiría al lado del script, y entonces el sitio queda duplicado
+    # dentro de generador/. Ya pasó: se publican los de la raíz, así que ese es el
+    # valor por defecto.
+    salida = here.parent
     if "--out" in sys.argv:                      # dónde escribir los HTML
         salida = pathlib.Path(sys.argv[sys.argv.index("--out") + 1]).resolve()
         salida.mkdir(parents=True, exist_ok=True)
