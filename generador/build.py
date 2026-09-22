@@ -31,6 +31,7 @@ _aqui = pathlib.Path(__file__).resolve().parent
 for _d in (_aqui, _aqui.parent):
     if (_d / "sheets.py").exists():
         sys.path.insert(0, str(_d)); break
+import gspread
 import sheets
 
 COSTOS = "1lMsQ_WMxlKZGT_EZPohpu28Zq9WUgaXZ32UOxd3yaNE"
@@ -272,7 +273,16 @@ def main():
             # Windows se publica aparte, en su propio CSV, porque conserva el
             # formato de bloques de Melman y el navegador lo lee con parseWin.
             if WINDOWS_DESDE == "costos":
-                crudas = leer_pestana(pestana)
+                try:
+                    crudas = leer_pestana(pestana)
+                except gspread.exceptions.WorksheetNotFound:
+                    # La tarea de Melman borra y rehace la pestaña: hay un par de
+                    # segundos en que no existe. No es un error, se reusa el CSV
+                    # anterior y la próxima corrida toma los datos nuevos.
+                    print("    ⚠ Windows se está reescribiendo, se deja el CSV anterior")
+                    ruta = salida / "windows.csv"
+                    crudas = (list(csv.reader(ruta.open(encoding="utf-8")))
+                              if ruta.exists() else [])
             else:
                 texto = bajar(f"{PUB}?gid={WIN_GID}&single=true&output=csv")
                 if not texto:

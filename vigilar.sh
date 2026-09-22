@@ -17,6 +17,22 @@ MAX_SEGUNDOS=21600          # 6 horas
 
 ahora() { date '+%d/%m %H:%M:%S'; }
 
+# Windows: el cron de GitHub se atrasa entre 2 y 4 horas (medido del 16 al 21/09).
+# Disparado desde acá a las 13:00 sale al toque, porque los disparos a mano no los
+# encola. El horario de GitHub queda de respaldo para cuando la Mac está apagada.
+# Si gh falla (sin red, sin sesión), no pasa nada: se reintenta al minuto siguiente
+# y, en el peor caso, el respaldo de GitHub lo hace igual más tarde.
+DISPARO="$HOME/tptecno/.windows_disparado"
+HOY=$(date '+%Y-%m-%d')
+if [ "$(date '+%H%M' | sed 's/^0*//')" -ge 1300 ] 2>/dev/null \
+   && [ "$(cat "$DISPARO" 2>/dev/null)" != "$HOY" ]; then
+  if gh workflow run "Windows a costos" --repo tptecno/catalogo >/dev/null 2>&1; then
+    echo "$HOY" > "$DISPARO"
+    echo "$(ahora)  → Windows: disparada la actualización diaria"
+  fi
+fi
+
+
 # Si quedó un generador colgado de una corrida anterior, se lo mata: mientras viva,
 # launchd no lanza esta tarea de nuevo y el catálogo se congela sin aviso.
 for viejo in $(pgrep -f "generador/build.py" || true); do
