@@ -40,7 +40,7 @@ ASUS,,
 "Processor: Intel® Core™ Ultra 7 Processor 256V 16GB 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 8 Threads), Memory: 16GB LPDDR5X RAM, Storage: 1TB PCIE G4 Solid State Drive, Video Card: Intel® Arc™ Graphics, Display: 14"" OLED WUXGA (1920Xx1200) Touch, 16:10, 60Hz refresh rate, Bend +300 nits, Wi-Fi 7(802.11be) (Tri-band)2*2 + Bluetooth® 5.4 Wireless Card",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,57Kg. - FHD camera with IR function to support Windows Hello w/ privacy shutter",,
-"ASUS ZENBOOK (UX3405CA-ES99T) 14"" 3K OLED TOUCHSCREEN LAPTOP FOGGY SILVER",USD 2.200,ING
+"ASUS ZENBOOK (UX3405CA-ES99T) 14"" 3K OLED TOUCHSCREEN LAPTOP FOGGY SILVER",USD 2.200,STK
 "Processor: 2.9 gigahertz Intel Core Ultra 9 Series 285H up to 5.4 gigahertz, Memory: 32GB LPDDR5X 7467 megahertz RAM, Storage: 1TB PCIE G4 Solid State Drive, Video Card: Intel® Arc™ Graphics, Display: 14"" OLED (2880 x 1800) Touchscreen Refresh Rate: 120Hz Brightness: 1100 nits, Wi-Fi 7, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,20Kg. - FHD camera with IR function to support Windows Hello w/ privacy shutter",,
@@ -87,7 +87,7 @@ DELL,,
 "Processor: Intel® Core™ Ultra 5 Processor 225U, Memory: 16GB DDR5 5600MT/s RAM, Storage: 1 TB M.2 PCIe NVMe SSD, Video Card: Integrated Intel® Graphics, Display: 15.6"" FHD Touchscreen 60Hz, WVA, Anti-Glare, 220 nits, Realtek Wi-Fi 6 RTL8852BE, 2x2, 802.11ax, MU-MIMO, Bluetooth 5.3",,
 "Windows 11 Home x 64 bits, preinstalado
  Peso 1.86Kg, Integrated Widescreen HD (720p) Webcam",,
-"DELL (LD15260-7140BLK) 15,6"" FUL HD TOUCHSCREEN LAPTOP BLACK [Pad Numérico]",USD 1.300,STK
+"DELL (LD15260-7140BLK) 15,6"" FUL HD TOUCHSCREEN LAPTOP BLACK [Pad Numérico]",USD 1.250,STK
 "Processor: Intel® Core™ Ultra 7 Processor 255U, Memory: 16GB, DDR5, 5600MT/s RAM, Storage: 1TB PCIe® NVMe™ M.2 Solid State Drive, Video Card: Integrated Intel® Graphics, Display: 15.6"", Touch, FHD, 60Hz, WVA, Anti-Glare, 220 nits, Realtek Wi-Fi 6 RTL8852BE, 2x2, 802.11ax, MU-MIMO, Bluetooth(R) wireless card",,
 "Microsoft® Windows 11 Home (64-bit), preinstalado
  Peso 1,94Kg, 1280 x 720 (HD), 30 FPS RGB Webcam, Inbuilt Microphone",,
@@ -127,6 +127,11 @@ DELL 16S (LDS16260-7779BLU) 2K TOUCHCREEN LAPTOP CELESTIAL BLUE,USD 1.600,STK
 "Processor: Intel® Core™ Ultra 5 235U vPro® (12 TOPS NPU up to 4.9 GHz) (12 cores), Memory: 32GB DDR5, 5600 MT/s RAM, Storage: 512GB, Video Card: Intel Graphics, Display: 16"" FHD+ (1920 x 1200) Panel IPS Refresh Rate 60 Hz, Gigabit Ethernet, 802.11ax Wireless LAN, Bluetooth",,
 "Microsoft® Windows 11 PRO (64-bit), preinstalado
  Peso 2.05Kg, Integrated Resolution 1080p FULL HD Webcam",,
+"DELL 16 PREMIUM XPS (DA16250-DRGG5) 16.3"" FULL HD+ NOTEBOOK SILVER",USD 2.500,ING
+"Processor: 1.5 GHz Intel Core Ultra 7 255H (Series 2) up to 5.1 GHz TurboBoost (16-core), Memory: 32 GB LPDDR5X 7467 MHz RAM, Storage: 1 TB SSD M.2 NVMe PCIe 4.0 4x, Display: 16.3"" 1920x1080 (Full HD) Refresh rate: 120 Hz, Brightness: 500 nt, Wi-Fi 7 (802.11be)",,
+Video Card: NVIDIA® RTX5050 8GB GDDR7,,
+"Microsoft® Windows 11 Home (64-bit), preinstalado
+ Peso 2.30Kg, Integrated Resolution 1080p FULL HD Webcam",,
 "Dell 16 PREMIUM (DA16250-D0RG4) 16.3"" FULL HD+ NOTEBOOK PLATINUM",USD 3.100,STK
 "Processor: Intel® Core™ Ultra 9 Processor 285H 24M Cache, up to 5.40 GHz (16-core), Memory: 32 GB: LPDDR5X, 7467 MT/s RAM, Storage: 1 TB SSD M.2 NVMe PCIe 4.0 4x, Display: 16.3"" 1920x1080 (Full HD) Refresh rate: 120 Hz, Brightness: 500 nt, Wi-Fi 7 (802.11be)",,
 Video Card: NVIDIA® RTX5060 8192MB,,
@@ -265,6 +270,10 @@ LENOVO,,
 "Processor: Intel® Core™ Ultra 7 258V (LPE-cores up to 3.70 GHz P-cores up to 4.80 GHz), Memory: 32GB LPDDR5X-8533MT/s RAM, Storage: 1TB SSD M.2 2242 PCIe Gen4 TLC Opal, Video Card: Integrated Intel® Arc™ 140V GPU, Display: 14"" 2.8K (2880 x 1800), OLED, Anti-Reflection/Anti-Smudge, Touch, HDR 600 True Black, Intel® Wi-Fi 7 BE201 2x2 BE & Bluetooth® 5.4",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,27Kg. - IR 1080P Webcam Compatible with Windows Hello",,
+"LENOVO THINKPAD X1 CARBON G14 AURA EDITION (21V7006GUS) 14"" 2K TOUCHSCREEN",USD 3.000,ING
+"Processor: Intel® Core™ Ultra 7 365 vPro® (LPE-cores up to 3.60 GHz P-cores up to 4.80 GHz), Memory: 32GB LPDDR5x 8533MHz RAM, Storage: 1TB SSD M.2 2280 PCIe Gen4 TLC Opal, Video Card: Integrated Intel® Graphics, Display: 14"" WUXGA (1920 x 1200), IPS, Anti-Glare, Touch, 100%sRGB, 500 nits, 60Hz, Low Power, Intel® Wi-Fi 7 BE211 2x2 BE vPro® & Bluetooth® 5.4",,
+"Windows 11 PRO x 64 bits, preinstalado.
+ Peso 1,10Kg. - 5MP RGB+IR with Computer Vision and Privacy Shutter",,
 "LENOVO YOGA SLIM 7i (83QK0011US) 14"" 3K OLED TOUCHSCREEN LAPTOP COSMIC BLUE Aura FIFA 26 Edition",USD 2.700,STK
 "Processor: 2.3 gigahertz Intel Core Ultra 7 Series 355 (8-core), Memory: 32GB LPDDR5X 6800 megahertz RAM, Storage: 1TB PCIe® G4 Solid State Drive, Video Card: Intel Graphics Integrated, Display: 14"" OLED (2880 x 1800) Touch Screen Refresh Rate: 120Hz, Brightness: 1100 nits, Wi-Fi 7 Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
@@ -457,16 +466,6 @@ DELL GAMER,,
 Video Card: NVIDIA GeForce RTX 5060 8GB,,
 "Windows 11 Home x64 bits, preinstalado
  Peso 2,69 Kg, FHD IR Camera Display with dual-array microphones,",,
-"DELL ALIENWARE 18 AREA-51 (LAA18250-9444B) 18"" QHD+ GAMING LAPTOP LIQUID TEAL",USD 3.900,CONS
-"Processor: Intel® Core Ultra 9 275HX (24-Core, 36MB Total Cache, 2.7GHz to 5.4GHz), Memory: 32GB 6400 MT/s RAM, Storage: 2TB PCIe® NVMe™ M.2 Solid State Drive, Display: 18"" QHD+ ComfortView+ Anti-Glare Display, Ethernet Card: Killer E5000 2.5GbE LAN, Intel Killer Wi-Fi 7 BE1750, Bluetooth 5.4",,
-Video Card: NVIDIA® GeForce RTX™ 5070 Ti 12GB GDDR7,,
-"Windows 11 Home x64 bits, preinstalado
- Peso 4,34 Kg, FHD IR Camera Display with dual-array microphones,",,
-"DELL ALIENWARE AREA-51 (LAA18250-9383BLU) 18"" QHD+ GAMING LAPTOP 300Hz LIQUID TEAL",USD 4.900,CONS
-"Processor: Intel® Core Ultra 9 processor 275HX (24-Core, 36MB Total Cache, 2.7GHz to 5.4GHz), Memory: 64GB DDR5 6400 RAM, Storage: 2TB M.2 PCIe NVMe SSD, Display: 18"" QHD+ (2560 x 1600) 300Hz, 3ms, ComfortView Plus, NVIDIA G-SYNC + DDS, 100% DCI-P3, FHD IR Camera, Intel Killer™ 1750 and Bluetooth 5.4",,
-Video Card: NVIDIA GeForce RTX 5090 (24GB GDDR7),,
-"Windows 11 Home x64 bits, preinstalado
- Peso 4,23Kg, Integrated 1080p at 30 fps FHD IR camera Dual-array microphones",,
 HP GAMER,,
 "HP HyperX OMEN (15-ga0103cl) 15.3"" 2.5K IPS GAMING LAPTOP 180Hz BLACK",USD 2.800,STK
 "Processor:Intel® Core™ Ultra 9 275HX up to 5.4 GHz with Intel® Turbo Boost Technology (24 cores), Memory: 32GB DDR5-5600 MT/s RAM, Storage: 1TB PCIe® Gen4 NVMe™ M.2 SSD, Display: 15.3"" 2.5K (2560 x 1600), up to 180 Hz, 3 ms response time, IPS, micro-edge, anti-glare, Low Blue Light, 500 nits, 100% sRGB, Variable Refresh Rate support, Wi-Fi 7 (2x2) and Bluetooth® 6.0 wireless card, Integrated 10/100/1000 GbE LAN, HyperX with dual speakers, DTS: X® Ultra",,
@@ -485,7 +484,7 @@ Video Card: NVIDIA GeForce RTX 5070 Ti 12GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
  Peso 2,98Kg. - 1080P Webcam and Microphone",,
 LENOVO GAMER,,
-"LENOVO LEGIO 5 (83Q6003BUS) 15.3"" 2.5K OLED GAMING LAPTOP 165Hz ECLIPSE BLACK [Pad Numérico]",USD 2.800,ING
+"LENOVO LEGIO 5 (83Q6003BUS) 15.3"" 2.5K OLED GAMING LAPTOP 165Hz ECLIPSE BLACK [Pad Numérico]",USD 2.800,STK
 "Processor: AMD Ryzen™ AI 9 465 (10C / 20T, 2.0 / 5.0GHz, 10MB L2 / 24MB L3), Memory: 32GB SODIMM DDR5-5600 RAM, Storage: 1TB SSD M.2 2242 PCIe® 4.0x4 NVMe®, Display: 15.3"" WQXGA (2560x1600) OLED 1000nits (peak) / 500nits (typical) Glossy, 100% DCI-P3, 165Hz, G-SYNC®, DisplayHDR™ True Black 1000, 100/1000M (RJ-45) Wi-Fi® 7, 802.11be 2x2 + BT5.4, 24-Zone RGB Backlit, English",,
 Video Card: NVIDIA® GeForce RTX™ 5070 8GB GDDR7,,
 "Windows 11 Home x64, preinstalado. 
