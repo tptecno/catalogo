@@ -237,7 +237,7 @@ LENOVO,,
 "Processor: AMD Ryzen™ AI 7 445 (6C / 12T, 2.0 / 4.6GHz, 6MB L2 / 8MB L3), Memory: 16GB SODIMM DDR5-5600Mhz, RAM, Storage: 1TB SSD M.2 2242 PCIe® 4.0x4 NVMe®, Video Card: Integrated AMD Radeon™ 840M Graphics, Display: 14"" WUXGA (1920 x 1200) IPS 400nits, Low Blue Light, High Gaming Performance, Wi-Fi 7 + Bluetooth 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,63Kg. - FHD 1080p + IR with Privacy Shutter, Dual-microphone array",,
-"LENOVO YOGA 7i Copilot+ PC (83TD0047US) 14"" 2K OLED TOUCHSCREEN LAPTOP 2-IN-1 SEASHELL",USD 1.500,STK
+"LENOVO YOGA 7 Copilot+ PC (83TD0047US) 14"" 2K OLED TOUCHSCREEN LAPTOP 2-IN-1 SEASHELL",USD 1.500,STK
 "Processor: 2 gigahertz AMD Ryzen AI 445 Series up to 4.6 gigahertz 4.4GHz (6-core), Memory: 24GB LPDDR5X-8000Mhz RAM, Storage: 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe®, Video Card: AMD Radeon 840M Integrated, Display: 14"" WUXGA (1920x1200) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 100% sRGB, 60Hz, Dolby Vision®, TÜV Low Blue Light, Glass, Touchscreen, Wi-Fi® 7, 802.11be + Bluetooth 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,38Kg. - 5.0MP + IR with Privacy Shutter",,
@@ -355,7 +355,7 @@ Video Card: NVIDIA GeForce RTX 5060 8GB GDDR7,,
 "Processor: 2.3GHz Intel® Core™ Ultra 9 185H P-core / E-core 1.8GHz / LP E-core 1.0GHz, Memory: 32GB DDR5 5600 MHz SODIMM RAM, Storage: 1TB 2280 G4 TLC SSD, Video Card: Integrated Intel® Arc Graphics, Display: 16"" WUXGA (1920 x 1200) IPS Anti-glare, Intel® Wi-Fi® 6E AX211, 802.11ax 2x2 Wi-Fi® + Bluetooth® 5.3, M.2 card",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,75Kg. - FHD 1080p with Privacy Shutter, Dual-microphone array",,
-"LENOVO PRO 9i AURA (83U90005US) 16"" 3.2K OLED TOUCHSCREEN LAPTOP THUNDER GREY",USD 3.500,STK
+"LENOVO PRO 9i AURA (83U90005US) 16"" 3.2K OLED TOUCHSCREEN LAPTOP THUNDER GREY",USD 3.500,CONS
 "Processor: Intel Core™ Ultra 9 386H 16C (4P + 8E + 4LPE) / 16T, Max Turbo 4.9GHz, 18MB Intel® Smart Cache, Memory: 32GB LPDDR5X-7467 RAM, Storage: 1TB SSD M.2 2242 PCIe® 4.0x4 NVMe®, Dislplay: 16"" 3.2K (3200x2000) Tandem OLED Touchscreen 1600nits (peak) / 1000nits (typical) Glossy / Anti-fingerprint, 100% sRGB, 120Hz, Dolby Vision®, DisplayHDRTM 1000, Corning® Gorilla® Glass 3, Wi-Fi® 7, 802.11be 2x2 + BT5.4, Lenovo Pen Gen 2",,
 Video Card: NVIDIA GeForce RTX™ 5060 8GB GDDR7,,
 "Windows 11 Home x64, preinstalado.
@@ -420,7 +420,7 @@ Video Card: NVIDIA® GeForce RTX™ 5060 Laptop GPU 8GB DDR7,,
 "Windows 11 Home x64, preinstalado.
  Peso 3,00Kg. - 1080P FHD camera Built-in array microphone; 1x 35mm Combo Audio Jack",,
 "ASUS ROG Strix G16 (G614PP-MS96) 16"" 2.5K GAMING NOTEBOOK 240Hz ECLIPSE GRAY",USD 3.000,STK
-"Processor: 2.1 GHz Base, 4.6 GHz Turbo Intel Core Ultra 9 275HX Up to 5.4GHz Twenty-Four-Core, Memory: 32GB DDR5-5600 RAM, Storage: 1TB PCIe Gen4 NVMe M.2 SSD, Display: 16"" 2.5K IPS Anti-Glare Widescreen 240Hz, Wi-Fi 7 802.11be+Bluetooth 5.4 Wireless Card",,
+"Processor: AMD Ryzen 9 8940HX, 16-Core / 32-Thread, 2.4 GHz base, up to 5.3 GHz, 80 MB Cache, Memory: 32GB DDR5-5600 RAM, Storage:  1TB PCIe Gen4 NVMe M.2 SSD, Display: 16"" FHD+ (1920 × 1200) IPS-Level, 165 Hz, 16:10, Anti-Glare, 100% sRGB, 3 ms response time, Wi-Fi 7 802.11be+Bluetooth 5.4 Wireless Card",,
 Video Card: NVIDIA GeForce RTX 5070 8GB GDDR7,,
 "Windows 11 Home x64, preinstalado.
  Peso 2,73Kg. - 1080P FHD camera Built-in array microphone; 1x 35mm Combo Audio Jack",,
@@ -609,11 +609,6 @@ Video Card: NVIDIA GeForce RTX 5080 16GB GDDR7,,
 Video Card: NVIDIA GeForce RTX 5090 24GB GDDR7,,
 "Windows 11 PRO x 64 bits, preinstalado
  Peso 2,60Kg, Integrated 1080p FHD Webcam Privacy Shutter IR FHD with Shutter",,
-"MSI Raider 18 HX 18""  (18A2XWIG-420US) QHD+ GAMING LAPTOP 240Hz BLACK",USD 3.700,CONS
-"Processor: base 2.1 GHz Intel® Core™ Ultra 9 285HX up 5,5 GHz (24 Cores), Memory: 32GB DDR5-5600 megahertz RAM, Storage: 1TB PCIe® Gen 4 Solid State Drive, Display: 18"" QHD+ (2560 x 1600) 240Hz 100% DCI-P3 IPS-Level Display, Killer Wi-Fi 7 BE1750 & Bluetooth 5.4",,
-Video Card: NVIDIA® GeForce RTX™ 5080 Laptop GPU (16GB GDDR7),,
-"Windows 11 Home x 64 bits, preinstalado
- Peso 3,60Kg, Integrated IR FHD Webcam with Privacy Shutter",,
 DELL ALL IN ONE,,
 "DELL (DEC24260-7157WHT) 23.8"" FULLHD TOUCHSCREEN ALL IN ONE WHITE",USD 1.950,STK
 "Processor: Intel® Core Ultra 7 processor 355, Memory: 16GB DDR5 5600 MT/s RAM, Storage: 1TB M2 PCIe NVMe SSD, Video Card: Integrated Intel® Graphics, Display: 23.8"" FHD Touchscreen (60 to 75 Hz), WVA, Anti-Glare, 300 nit, 99% sRGB, Pen Support, 10/100/1000 Mbps RJ-45 Ethernet, Intel® Wi-Fi 7, BE213 802.11be, Bluetooth® 6.0 wireless card",,
