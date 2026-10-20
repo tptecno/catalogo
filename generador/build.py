@@ -197,14 +197,42 @@ def colores_publicados(gid):
     return out
 
 
+def es_precio(valor):
+    """¿La celda B de una fila de Windows es realmente un precio?
+
+    Melman manda, cada tanto, el código interno del proveedor en la columna del
+    precio de una línea de specs (`RAIDER16MXHXB4`, `A2XWIG-420US`). Como acá un
+    renglón se toma por producto justamente porque tiene algo en B, esas filas se
+    colaban como productos fantasma: el código salía de los paréntesis del texto
+    de specs, o sea `2560x1600`, y el producto de arriba se quedaba sin specs.
+    Viene así desde la lista del proveedor y se copia a las dos planillas, así
+    que se limpia acá, que es lo único que controlamos nosotros."""
+    v = (valor or "").strip()
+    if not v:
+        return False
+    v = re.sub(r"(?i)^usd\s*", "", v)
+    v = v.replace(".", "").replace(",", ".").strip()
+    try:
+        float(v)
+        return True
+    except ValueError:
+        return False
+
+
 def filas_windows(rows):
     """Windows conserva el formato de bloques de Melman: 3 o 4 filas por producto.
     Solo se publican las columnas A (nombre/specs), B (precio) y C (stock).
     La F, que trae el costo del proveedor, se descarta a propósito: hoy viaja al
     CSV publicado y no tiene por qué verla un cliente."""
-    return [[(r[0] if len(r) > 0 else ""),
-             (r[1] if len(r) > 1 else ""),
-             (r[2] if len(r) > 2 else "")] for r in rows]
+    salida = []
+    for r in rows:
+        a = r[0] if len(r) > 0 else ""
+        b = r[1] if len(r) > 1 else ""
+        c = r[2] if len(r) > 2 else ""
+        if b.strip() and not es_precio(b):
+            b, c = "", ""          # basura del proveedor, ver es_precio()
+        salida.append([a, b, c])
+    return salida
 
 
 def productos_windows(rows):
@@ -222,13 +250,14 @@ def productos_windows(rows):
         stk = (r[2] if len(r) > 2 else "").strip()
         if not a:
             continue
-        if not precio and a == a.upper() and len(a) < 28 and not re.search(r"[:.]", a):
+        hay_precio = es_precio(precio)
+        if not hay_precio and a == a.upper() and len(a) < 28 and not re.search(r"[:.]", a):
             cerrar(); cur = None
             tipo = ("Gamer" if "GAMER" in a else "All in One" if "ALL IN ONE" in a
                     else "Monitor" if "MONITOR" in a else "Notebook")
             marca = re.sub(r"\s*(GAMER|ALL IN ONE|MONITOR.*)$", "", a).strip()
             continue
-        if precio:
+        if hay_precio:
             cerrar()
             cur = {"bloque": f"{marca} {tipo}".strip(), "codigo": "",
                    "desc": " ".join(a.split()), "precio": precio, "stock": stk,
