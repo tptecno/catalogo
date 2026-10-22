@@ -11,7 +11,7 @@ ACER,,
 "Processor: 2.3 gigahertz Intel Core Ultra 7 355 (8-core), Memory: 32GB LPDDR5X RAM, Storage: 1TB SSD, Video Card: Intel Graphics, Display: 16"" 1920 x 1200 (WUXGA) TouchScreen Brightness 250 nits, Wi-Fi 7, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,37 Kg. - 5 megapixels 1800p (2.8K) Built-In Microphone",,
-"ACER SWIFT GO (SFG16-A71T-R87F) 16"" WUXGA TOUCHSCREEN LAPTOP OBSIDIAN BLACK [Pad Numérico]",USD 1.600,STK
+"ACER SWIFT GO (SFG16-A71T-R87F) 16"" WUXGA TOUCHSCREEN LAPTOP OBSIDIAN BLACK [Pad Numérico]",USD 1.600,CONS
 "Processor: 2 gigahertz AMD Ryzen AI 465 Series (10-core), Memory: 32GB LPDDR5X RAM, Storage: 1TB SSD, Video Card: AMD Radeon 880M, Display: 16"" LCD 1920 x 1200 (WUXGA) Touchscreen Anti-glare 120Hz Brightness: 350 nits, Wi-Fi 7, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,60 Kg. - 5 megapixels 1800p (2.8K) Built-In Microphone",,
@@ -28,7 +28,7 @@ ASUS,,
 "Processor: 2.1 GHz Intel® Core™ Ultra X9 388H 2.1 GHz (18MB Cache, up to 5.1 GHz, 16 cores, 16 Threads), Memory: 32GB LPDDR5X RAM, Storage: 1TB PCIe® G4 Solid State Drive, Video Card: Intel® Arc™ Graphics, Display: 14'' Dual OLED WQXGA+ (2880x1800) Touch 144Hz refresh rate; 16:10 aspect ratio; Bend+500nits (HDR 1000nits), Wi-Fi 7(802.11be) (Tri-band) 2*2 + Bluetooth® 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,28Kg. - 1080p. Camera with IR Function to Support Windows Hello",,
-"ASUS ZENBOOK 14 (UM3405GA-ZB70) 14"" 2K OLED TOUCHSCREEN LAPTOP JASPER GRAY",USD 1.500,ING
+"ASUS ZENBOOK 14 (UM3405GA-ZB70) 14"" 2K OLED TOUCHSCREEN LAPTOP JASPER GRAY",USD 1.500,STK
 "Processor: 2 gigahertz AMD Ryzen AI Ryzen AI 9 465 (10-core), Memory: 16GB LPDDR5X 7500 megahertz RAM, Storage: 512GB PCIe® Gen 4 Solid State Drive, Video Card: AMD Radeon Integrated, Display: 14"" OLED (1920x1200) WUXGA Touscreen 60Hz 500 nits, AX Wi-Fi 6E, Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,28Kg. - 1080p. Camera with IR Function to Support Windows Hello",,
@@ -40,7 +40,7 @@ ASUS,,
 "Processor: Intel® Core™ Ultra 7 Processor 256V 16GB 2.2 GHz (12MB Cache, up to 4.8 GHz, 8 cores, 8 Threads), Memory: 16GB LPDDR5X RAM, Storage: 1TB PCIE G4 Solid State Drive, Video Card: Intel® Arc™ Graphics, Display: 14"" OLED WUXGA (1920Xx1200) Touch, 16:10, 60Hz refresh rate, Bend +300 nits, Wi-Fi 7(802.11be) (Tri-band)2*2 + Bluetooth® 5.4 Wireless Card",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,57Kg. - FHD camera with IR function to support Windows Hello w/ privacy shutter",,
-"ASUS VIVOBOOK 14 FLIP (TP3407SA-IB74T) 14"" OLED FULLHD TOUCHSCREEN MATTE GRAY",USD 1.400,ING
+"ASUS VIVOBOOK 14 FLIP (TP3407SA-IB74T) 14"" OLED FULLHD TOUCHSCREEN MATTE GRAY",USD 1.400,STK
 "Processor: Intel Core Ultra 7 256V up to 4.8 GHz, (8-Core) 12 MB Cache, Memory: 16 GB LPDDR5X RAM, Storage: 512 GB PCIe Gen 4 NVMe SSD, Video Card: Intel Arc Graphics Integrated, Display: 14"" OLED WUXGA (1920 × 1200), Touchscreen, 60 Hz, 300 nits, Wireless: Wi-Fi 7, Bluetooth 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,57Kg. - FHD camera with IR function to support Windows Hello w/ privacy shutter",,
@@ -147,7 +147,7 @@ Video Card: NVIDIA GeForce RTX5060 with 8GB GDDR7,,
 "Microsoft® Windows 11 PRO (64-bit), preinstalado
  Peso 2.30Kg, Integrated Resolution 1080p FULL HD Webcam",,
 HP,,
-"HP OMNIBOOK X FLIP (14-FM0013DX) 14"" 2K TOUCHSCREEN LAPTOP 2-IN-1 ATMOSPHERIC BLUE",USD 1.150,STK
+"HP OMNIBOOK X FLIP (14-FM0013DX) 14"" 2K TOUCHSCREEN LAPTOP 2-IN-1 ATMOSPHERIC BLUE",USD 1.200,STK
 "Processor: 4.5 gigahertz Intel Core Ultra 5 Series 226V (8-core), Memory: 16GB LPDDR5 8533 megahertz, Storage: 512GB PCle® NVMe™ M.2 Solid State Drive, Video Card: Intel Arc 130V, Display: 14"" IPS 1920 x 1200 (Full HD+) Touchscreen 400 nits, Wi-Fi: Wi-Fi 6 (802.11ax), Bluetooth 5.3",,
 "Windows 11 Home x64 bits, preinstalado.
  Peso 1,39 Kg. - HP Wide Vision 720p HD camera with temporal noise reduction and integrated dual array digital microphones",,
@@ -257,7 +257,7 @@ LENOVO,,
 "Processor: Intel Core™ i7-1355U, 10C (2P + 8E) / 12T, P-core 1.7 / 5.0GHz, E-core 1.2 / 3.7GHz, Memory: 16GB 3200 MT/s DDR4, Storage: 512GB / M.2 NVMe SSD, Video Card: Integrated Intel® Iris® Xe Graphics, Display: 14"" WUXGA (1920x1200) IPS 300nits Anti-glare, 45% NTSC, Touch, Wi-Fi 6E (802.11ax), Bluetooth 5.3",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,34Kg. - Integrated 1080p Webcam with Privacy Shutter",,
-"LENOVO THINKBOOK 14 G8 IAL (21SJ00EWUS) 14"" FULLHD+ TOUCHSCREEN ARCTIC GREY",USD 1.900,ING
+"LENOVO THINKBOOK 14 G8 IAL (21SJ00EWUS) 14"" FULLHD+ TOUCHSCREEN ARCTIC GREY",USD 1.900,STK
 "Processor: Intel Core Ultra 7 255H, 16C (6P + 8E + 2LPE) 16T, Max Turbo up, Memory: 32GB SODIMM DDR5-5600 RAM, Storage: 1TB M.2 2242 PCIe 4.0x4 NVMe SSD, Video Card: Integrated Intel Arc 140T GPU, Display: 14"" WUXGA (1920x1200) IPS 300nits Anti-glare, 45% NTSC, 60Hz, Touchscreen, 100/1000M (RJ-45), 
  Intel® Wi-Fi® 6E AX211, 802.11ax 2x2 + BT5.3",,
 "Windows 11 Home x 64 bits, preinstalado.
@@ -270,11 +270,11 @@ LENOVO,,
 "Processor: Intel® Core™ Ultra 7 258V (LPE-cores up to 3.70 GHz P-cores up to 4.80 GHz), Memory: 32GB LPDDR5X-8533MT/s RAM, Storage: 1TB SSD M.2 2242 PCIe Gen4 TLC Opal, Video Card: Integrated Intel® Arc™ 140V GPU, Display: 14"" 2.8K (2880 x 1800), OLED, Anti-Reflection/Anti-Smudge, Touch, HDR 600 True Black, Intel® Wi-Fi 7 BE201 2x2 BE & Bluetooth® 5.4",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,27Kg. - IR 1080P Webcam Compatible with Windows Hello",,
-"LENOVO ThinkPad T14S (21YU0028US) 14"" FULLHD TOUCHSCREEN COSMIC BLUE",USD 2.500,ING
+"LENOVO ThinkPad T14S (21YU0028US) 14"" FULLHD TOUCHSCREEN COSMIC BLUE",USD 2.500,STK
 "Processor: Intel Core Ultra 7 365 vPro, P-cores up to 4.80 GHz, LPE-cores up to 3.60 GHz, Memory: 32 GB LPDDR5X-7467 MT/s RAM, Storage: 1 TB M.2 2280 PCIe Gen 4x4 NVMe SSD, Video Card: Integrated Intel Graphics, Display: 14"" WUXGA (1920 × 1200) IPS, Touchscreen, Anti-Glare, 100% sRGB, 500 nits, 60 Hz,",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,27Kg. - 5 MP webcam with IR, privacy shutter, Dual-array integrated microphone",,
-"LENOVO THINKPAD X1 CARBON G14 AURA EDITION (21V7006GUS) 14"" 2K TOUCHSCREEN",USD 3.000,ING
+"LENOVO THINKPAD X1 CARBON G14 AURA EDITION (21V7006GUS) 14"" 2K TOUCHSCREEN",USD 3.000,STK
 "Processor: Intel® Core™ Ultra 7 365 vPro® (LPE-cores up to 3.60 GHz P-cores up to 4.80 GHz), Memory: 32GB LPDDR5x 8533MHz RAM, Storage: 1TB SSD M.2 2280 PCIe Gen4 TLC Opal, Video Card: Integrated Intel® Graphics, Display: 14"" WUXGA (1920 x 1200), IPS, Anti-Glare, Touch, 100%sRGB, 500 nits, 60Hz, Low Power, Intel® Wi-Fi 7 BE211 2x2 BE vPro® & Bluetooth® 5.4",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,10Kg. - 5MP RGB+IR with Computer Vision and Privacy Shutter",,
