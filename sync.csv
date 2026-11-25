@@ -246,7 +246,7 @@ imac,Mac Studio (Release 2026),MSM5M36512,M5 Max - 18 core CPU / 32 core GPU - 3
 imac,Mac Studio (Release 2026),MSM5M361TB,M5 Max - 18 core CPU / 32 core GPU - 36GB - 1TB SSD,USD 3.480,SI,,
 imac,Mac Studio (Release 2026),MSM5M481TB,M5 Max - 18 core CPU / 40 core GPU - 48GB - 1TB SSD,USD 4.350,SI,,
 imac,Mac Studio (Release 2026),MSM5M482TB,M5 Max - 18 core CPU / 40 core GPU - 48GB - 2TB SSD,USD 4.880,SI,,
-imac,Mac Studio (Release 2026),MSM5U961,M5 Ultra - 30 core CPU / 64 core GPU - 96GB - 1TB SSD,USD 7.120,SI,,
+imac,Mac Studio (Release 2026),MSM5U961,M5 Ultra - 30 core CPU / 64 core GPU - 96GB - 1TB SSD,,NO,Ingresando,
 imac,"Apple Studio Display 27""",SD27,"Standard Glass, Tilt Adjustable Stand",USD 2.750,SI,,
 imac,"Apple Studio Display 27""",SD271,"Nano Texture Glass, Tilt Adjustable Stand",USD 3.080,SI,,
 imac,"Apple Studio Display 27""",SD273,"Standard Glass, Tilt & Height Adjustable Stand",USD 3.200,SI,,
