@@ -11,7 +11,7 @@ ACER,,
 "Processor: Intel® Core™ Ultra X7 358H (Series 3 / Panther Lake), Memory: 16GB LPDDR5X-7467MHz RAM, Storage: 1 TB PCIe 4.0 NVMe SSD, Video Card: Intel Arc B390 Integrated, Display: 16"" 3K OLED Touchscreen, 2880 × 1800, 120 Hz, 340 nits, 100% DCI-P3, VESA DisplayHDR True Black 500, Wi-Fi 7 + Bluetooth.",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,37 Kg. - 5 megapixels 1800p (2.8K) Built-In Microphone",,
-"ACER ASPIRE (A16-52MT-91B0) 16"" FULL HD TOUCHSCREEN LAPTOP STEEL GRAY (Pad Numérico)",USD 1.450,STK
+"ACER ASPIRE (A16-52MT-91B0) 16"" FULL HD TOUCHSCREEN LAPTOP STEEL GRAY (Pad Numérico)",USD 1.450,CONS
 "Processor: Intel® Core™ Ultra 9 288V (Up to 48 NPU TOPs), Memory: 32GB LPDDR5X RAM. Storage: 1TB PCIe Gen 4 Solid State Drive and microSD™ Card Reader , Video Card: Intel® ARC™ 140V Graphics, Display: 16"" Multi-Touch IPS Touchscreen, WUXGA (1920 x 1200) 12Hz Refresh Rate, 100% sRGB, and 350 Nits Brightness, Intel® Wi-Fi 7 that supports dual-stream Wi-Fi in the 2.4GHz, 5GHz and 6GHz bands, including 2x2 MIMO Technology, Bluetooth 5.4",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,45Kg. - FHD IR Webcam (1920 x 1080) with Blue Glass Windows Hello, Temporal Noise Reduction & Privacy Shutter",,
@@ -146,10 +146,6 @@ HP,,
 "Processor: 5 gigahertz AMD Ryzen AI 400 Series 9 465 (10-core), Memory: 32GB LPDDR5x-8533 MT/s RAM, Storage: 512GB PCIe® NVMe™ M.2 Solid State Drive, Video Card: AMD Radeon 880M, Display: 16"" Full HD+ (1920 x 1200) Oled UWVA Touch Screen Brightness: 300 nits, Wi-Fi 7 Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 2,10Kg. - Privacy Front-Facing Camera, Built-In Microphone",,
-"HP OMNIBOOK 3 (16-BU0305DX) 16"" 2K TOUCHSCREEN LAPTOP MICA SILVER [Pad Numérico]",USD 920,CONS
-"Processor: 4.8 gigahertz Intel Core Ultra 5 Series 225U (12-core), Memory: 8GB DDR5 5600 megahertz RAM, Storage: 512GB PCIe 4.0 SSD, Video Card: Intel Graphics Integrated, Display: 16"" IPS LED 1920 x 1200 (WUXGA) Anti-glare Brightness: 300 nits, Wi-Fi 7 Bluetooth",,
-"Windows 11 Home x 64 bits, preinstalado.
- Peso 1,64Kg. - 1080p Privacy camera and Built-In Microphone",,
 "HP OMNIBOOK 3 (16-BU0007DX) 16"" 2K TOUCHSCREEN LAPTOP MICA SILVER [Pad Numérico]",USD 1.250,STK
 "Processor: 5.2 gigahertz Intel Core Ultra 7 Series 255U (12-core), Memory: 16GB DDR5 5600 megahertz RAM, Storage: 512GB PCIe 4.0 SSD, Video Card: Intel Graphics Integrated, Display: 16"" IPS LED 1920 x 1200 (WUXGA) Anti-glare Brightness: 300 nits, Wi-Fi 7 Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
@@ -218,7 +214,7 @@ LENOVO THINKPAD P14s Gen 6 (21QL0013US) 14” FULLHD+ Mobile Workstation BLACK,U
 "Processor: AMD Ryzen AI 7 PRO 350 (8-Core) / 16-Thread, 2.0 GHz Base, up to 5.0 GHz, 8 MB L2 / 16 MB L3 Cache, NPU up to 50 TOPS, Memory: 32 GB DDR5-5600 RAM, Storage: 1 TB M.2 2280 PCIe Gen 4 NVMe SSD, Video Card: Integrated AMD Radeon 860M Graphics, Display: 14"" WUXGA IPS, 1920 × 1200, 60 Hz, 400 nits, Anti-Glare, 45% NTSC, Non-Touch, Wireless: MediaTek Wi-Fi 7 (802.11be), Bluetooth 5.4",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,39Kg. - 5MP RGB+IR with Microphone and Privacy Shutter, Computer Vision, Video High Dynamic Range",,
-LENOVO THINKPAD P14s Gen 7 AMD (21X00004US) 14” FULLHD+ Mobile Workstation BLACK,USD 2.400,ING
+LENOVO THINKPAD P14s Gen 7 AMD (21X00004US) 14” FULLHD+ Mobile Workstation BLACK,USD 2.400,STK
 "Processor: AMD Ryzen AI 7 PRO 450 (8 cores, 16 threads, 2.00 GHz to 5.10 GHz, 50 TOPS NPU performance), Memory: 32 GB DDR5-5600 MT/s SODIMM, Storage: 1 TB M.2 2280 PCIe Gen4 TLC Opal NVMe SSD, Video Card: Integrated AMD Radeon 860M, Display: 14"" WUXGA (1920 x 1200) IPS, Anti-Glare, Touch, 100% sRGB, 500 nits, 60Hz, Low Power, Connectivity: MediaTek Wi-Fi 7 MT7925 (2x2 BE), Bluetooth 5.4, RJ-45 Ethernet",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,36Kg. - 5MP RGB+IR with Microphone and Privacy Shutter, Computer Vision, Video High Dynamic Range",,
@@ -240,7 +236,7 @@ LENOVO THINKPAD P14s Gen 7 AMD (21X00004US) 14” FULLHD+ Mobile Workstation BLA
 "Processor: Intel Core Ultra 7 365 vPro, P-cores up to 4.80 GHz, LPE-cores up to 3.60 GHz, Memory: 32 GB LPDDR5X-7467 MT/s RAM, Storage: 1 TB M.2 2280 PCIe Gen 4x4 NVMe SSD, Video Card: Integrated Intel Graphics, Display: 14"" WUXGA (1920 × 1200) IPS, Touchscreen, Anti-Glare, 100% sRGB, 500 nits, 60 Hz,",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,27Kg. - 5 MP webcam with IR, privacy shutter, Dual-array integrated microphone",,
-"LENOVO THINKPAD X1 CARBON G14 AURA EDITION (21V7006GUS) 14"" 2K TOUCHSCREEN",USD 3.000,STK
+"LENOVO THINKPAD X1 CARBON G14 AURA EDITION (21V7006GUS) 14"" 2K TOUCHSCREEN",USD 3.000,CONS
 "Processor: Intel® Core™ Ultra 7 365 vPro® (LPE-cores up to 3.60 GHz P-cores up to 4.80 GHz), Memory: 32GB LPDDR5x 8533MHz RAM, Storage: 1TB SSD M.2 2280 PCIe Gen4 TLC Opal, Video Card: Integrated Intel® Graphics, Display: 14"" WUXGA (1920 x 1200), IPS, Anti-Glare, Touch, 100%sRGB, 500 nits, 60Hz, Low Power, Intel® Wi-Fi 7 BE211 2x2 BE vPro® & Bluetooth® 5.4",,
 "Windows 11 PRO x 64 bits, preinstalado.
  Peso 1,10Kg. - 5MP RGB+IR with Computer Vision and Privacy Shutter",,
@@ -248,7 +244,7 @@ LENOVO THINKPAD P14s Gen 7 AMD (21X00004US) 14” FULLHD+ Mobile Workstation BLA
 "Processor: 2.3 gigahertz Intel Core Ultra 7 Series 355 (8-core), Memory: 32GB LPDDR5X 6800 megahertz RAM, Storage: 1TB PCIe® G4 Solid State Drive, Video Card: Intel Graphics Integrated, Display: 14"" OLED (2880 x 1800) Touch Screen Refresh Rate: 120Hz, Brightness: 1100 nits, Wi-Fi 7 Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,25Kg. - 5Mp Front Facing Camera with Dual Microphone and E-Shutter",,
-"LENOVO IDEAPAD SLIM 3 15ARP10 (83K700TUUS) 15,3"" FULLHD+ TOUCHSCREEN LAPTOP LUNAR GRAY [Pad Numérico]",USD 1.050,ING
+"LENOVO IDEAPAD SLIM 3 15ARP10 (83K700TUUS) 15,3"" FULLHD+ TOUCHSCREEN LAPTOP LUNAR GRAY [Pad Numérico]",USD 1.050,STK
 "Processor: AMD Ryzen™ 7 170 (8C / 16T, 3.2 / 4.75GHz, 4MB L2 / 16MB L3), Memory: 16GB SODIMM DDR5-4800 RAM, Storage: 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe®, Video Card: Integrated AMD Radeon™ 680M Graphics, Display: 
  15.3"" WUXGA (1920x1200) IPS 300nits Anti-glare, 45% NTSC, 60Hz, Touch, Wi-Fi® 6, 802.11ax 2x2 + BT5.3",,
 "Windows 11 Home x 64 bits, preinstalado.
@@ -297,7 +293,7 @@ Video Card: NVIDIA GeForce RTX 5060 8GB GDDR7,,
 "Processor: 2.1 gigahertz Intel Core Ultra 7 Series 2 226V up to 4.5 gigahertz (8-core), Memory: 16GB SODIMM DDR5-8533Mhz RAM, Storage: 512GB PCIe 4.0 SSD, Graphics, Display: 16"" 2K WUXGA (1920x1200) IPS Touchscreen 2-IN-1 Brightness: 300 nits, Refresh Rate, 60Hz, Wi-Fi 7 Bluetooth",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,92Kg. - 1080p Front-Facing Camera, Built-In Microphone",,
-"LENOVO THINKPAD E16 G2 (21MAA010US) 16"" FULLHD+ NOTEBOOK ECLIPSE BLACK [Pad Numérico]",USD 1.750,STK
+"LENOVO THINKPAD E16 G2 (21MAA010US) 16"" FULLHD+ NOTEBOOK ECLIPSE BLACK [Pad Numérico]",USD 1.750,CONS
 "Processor: 1.7GHz Intel Core Ultra 7 155U, Memory: 32GB DDR5-5600MHz RAM, Storage: 1TB SSD, Video Card: Intel Graphics Integrated Graphics, Display: 16"" WUXGA (1920x1200) IPS Anti-Glare, Gigabit LAN 10/100/1000 Network, WiFi 6 (802.11ax), Bluetooth 5.2",,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,81Kg. - 1080P IR with Privacy Shutter",,
@@ -314,7 +310,7 @@ Video Card: NVIDIA® Blackwell RTX 5120-core GPU,,
  Peso 1,75Kg. - Webcam User-Facing 9.2 MP, with Privacy Shutter, Mic 3 Integrated Microphones",,
 "LENOVO PRO 9 15N1X11 (83SS0008US) 15.3"" 2.5K OLED TOUCHSCREEN LAPTOP THUNDER GRAY",USD 5.100,STK
 "Processor: NVIDIA RTX Spark™ N1X with 6144-core GPU and 20-core CPU, Memory: 64GB LPDDR5X-9400MHz RAM, Storage: 2TB SSD M.2 2242 PCIe® 5.0x4 NVMe®, Wi-Fi® 7, 802.11be 2x2 + BT5.4,Lenovo® Yoga® Pen Gen 2 (Luna Grey)",,
-Video Card: NVIDIA® Blackwell RTX 5120-core GPU,,
+Video Card: NVIDIA® Blackwell RTX 6144-core GPU,,
 "Windows 11 Home x 64 bits, preinstalado.
  Peso 1,75Kg. - Webcam User-Facing 9.2 MP, with Privacy Shutter, Mic 3 Integrated Microphones",,
 LENOVO MINI PC,,
